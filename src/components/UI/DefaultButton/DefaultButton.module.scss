@@ -1,0 +1,13 @@
+.button {
+  background-color: $deepBlueColor;
+  color: $lightColor;
+  padding: rem(4) rem(16);
+  border-radius: rem(4);
+  transition: background-color ease 0.3s;
+}
+
+.button:hover {
+  background-color: $blueColor;
+  color: $lightBlueColor;
+  transition: background-color ease 0.3s;
+}

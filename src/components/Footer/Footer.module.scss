@@ -1,0 +1,21 @@
+.footer {
+  background-color: $lightBlueColor;
+  padding: rem(8) 0;
+
+  &__body {
+    display: flex;
+    align-items: center;
+    font-size: rem(20);
+    justify-content: space-between;
+  }
+}
+
+.github {
+  display: flex;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
