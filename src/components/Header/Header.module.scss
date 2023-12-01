@@ -12,7 +12,7 @@
 }
 
 .logo {
-  @include adaptiveValue("font-size", 26, 20, 0);
+  @include adaptiveValue('font-size', 26, 20, 0);
   letter-spacing: rem(1);
   a {
     color: $deepBlueColor;
@@ -34,4 +34,13 @@
   display: flex;
   column-gap: rem(16);
   font-size: rem(20);
+
+  a {
+    transition: color ease 0.3s;
+  }
+
+  a:hover {
+    color: $blueColor;
+    transition: color ease 0.3s;
+  }
 }

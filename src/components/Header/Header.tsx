@@ -1,6 +1,7 @@
-import DefaultButton from "../UI/DefaultButton/DefaultButton";
-import DefaultInput from "../UI/DefaultInput.module.scss/DefaultInput";
-import styles from "./Header.module.scss";
+import Link from 'next/link';
+import DefaultButton from '../UI/DefaultButton/DefaultButton';
+import DefaultInput from '../UI/DefaultInput.module.scss/DefaultInput';
+import styles from './Header.module.scss';
 
 export default function Header() {
   return (
@@ -8,13 +9,19 @@ export default function Header() {
       <div className="container">
         <div className={styles.body}>
           <div className={styles.logo}>
-            <a href="#">AkuAnime</a>
+            <Link href="/">AkuAnime</Link>
           </div>
           <nav className={styles.menu__navigation}>
             <ul className={styles.menu__list}>
-              <li className={styles.menu__item}>Anime</li>
-              <li className={styles.menu__item}>Manga</li>
-              <li className={styles.menu__item}>Characters</li>
+              <li className={styles.menu__item}>
+                <Link href={'/anime'}>Anime</Link>
+              </li>
+              <li className={styles.menu__item}>
+                <Link href={'/manga'}>Manga</Link>
+              </li>
+              <li className={styles.menu__item}>
+                <Link href={'/characters'}>Characters</Link>
+              </li>
             </ul>
           </nav>
           <div className={styles.searchbar}>

@@ -1,9 +1,9 @@
 import styles from './page.module.scss';
 
-export default function Home() {
+export default function Manga() {
   return (
     <main className={styles.main}>
-      <div className="container">Main</div>
+      <div className="container">Manga</div>
     </main>
   );
 }
