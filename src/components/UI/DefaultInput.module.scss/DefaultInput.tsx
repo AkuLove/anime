@@ -1,4 +1,4 @@
-import styles from "./DefaultInput.module.scss";
+import styles from './DefaultInput.module.scss';
 
 export default function DefaultInput({ placeholder }: { placeholder: string }) {
   return (

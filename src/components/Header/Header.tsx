@@ -14,13 +14,13 @@ export default function Header() {
           <nav className={styles.menu__navigation}>
             <ul className={styles.menu__list}>
               <li className={styles.menu__item}>
-                <Link href={'/anime'}>Anime</Link>
+                <Link href="/anime">Anime</Link>
               </li>
               <li className={styles.menu__item}>
-                <Link href={'/manga'}>Manga</Link>
+                <Link href="/manga">Manga</Link>
               </li>
               <li className={styles.menu__item}>
-                <Link href={'/characters'}>Characters</Link>
+                <Link href="/characters">Characters</Link>
               </li>
             </ul>
           </nav>

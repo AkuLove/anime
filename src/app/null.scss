@@ -2,7 +2,10 @@
   padding: 0px;
   margin: 0px;
   border: none;
-  font-family: Titillium Web, Montserrat, sans-serif;
+  font-family:
+    Titillium Web,
+    Montserrat,
+    sans-serif;
 }
 
 *,
@@ -82,7 +85,7 @@ input::-ms-clear {
 }
 
 button,
-input[type="submit"] {
+input[type='submit'] {
   display: inline-block;
   box-shadow: none;
   background-color: transparent;

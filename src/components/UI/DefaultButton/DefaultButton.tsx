@@ -1,4 +1,4 @@
-import styles from "./DefaultButton.module.scss";
+import styles from './DefaultButton.module.scss';
 
 export default function DefaultButton({
   children,

@@ -1,6 +1,6 @@
-import Image from "next/image";
-import styles from "./Footer.module.scss";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from './Footer.module.scss';
 
 export default function Footer() {
   const date = new Date().getFullYear();
@@ -11,11 +11,11 @@ export default function Footer() {
         <div className={styles.footer__body}>
           <div className={styles.github}>
             <Link
-              href={"https://github.com/AkuLove"}
+              href="https://github.com/AkuLove"
               className={styles.github__body}
             >
               <Image
-                src={"/github-mark.svg"}
+                src="/github-mark.svg"
                 width={40}
                 height={40}
                 alt="github logo"
@@ -24,7 +24,7 @@ export default function Footer() {
             </Link>
           </div>
           <p className={styles.date}>
-            {date !== 2023 ? `©AkuAnime 2023 - ${date}` : "©AkuAnime 2023"}
+            {date !== 2023 ? `©AkuAnime 2023 - ${date}` : '©AkuAnime 2023'}
           </p>
         </div>
       </div>
