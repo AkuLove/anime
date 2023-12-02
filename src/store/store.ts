@@ -10,13 +10,16 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { animeApi } from '@/services/animeApi';
 
 const persistConfig = {
   key: 'root',
   storage,
 };
 
-const reducers = combineReducers({});
+const reducers = combineReducers({
+  [animeApi.reducerPath]: animeApi.reducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
@@ -27,7 +30,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(animeApi.middleware),
 });
 
 export const persistor = persistStore(store);

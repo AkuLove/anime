@@ -4,6 +4,7 @@ import './globals.scss';
 
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import { StoreProvider } from '@/store/StoreProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,11 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="wrapper">
-          <Header />
-          {children}
-          <Footer />
-        </div>
+        <StoreProvider>
+          <div className="wrapper">
+            <Header />
+            {children}
+            <Footer />
+          </div>
+        </StoreProvider>
       </body>
     </html>
   );

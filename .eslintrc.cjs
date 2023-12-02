@@ -1,3 +1,5 @@
+const { off } = require('process');
+
 module.exports = {
   root: true,
   env: { browser: true, es2021: true },
@@ -31,5 +33,6 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'consistent-return': 'off',
     'react-refresh/only-export-components': 'off',
+    'import/extensions': 'off',
   },
 };
