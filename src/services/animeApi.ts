@@ -1,5 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IAnimeResponse } from '@/types/IAnime';
+import {
+  IAnimeResponse,
+  IChooseAnimeOrManga,
+  ISingleAnimeResponse,
+} from '@/types/IAnime';
 
 export const animeApi = createApi({
   reducerPath: 'animeApi',
@@ -7,8 +11,7 @@ export const animeApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.jikan.moe/v4/' }),
   endpoints: (build) => ({
     getList: build.query<IAnimeResponse, string>({
-      query: (type: 'anime' | 'manga', limit = '10') =>
-        `/${type}?${limit && `limit=${limit}`}`,
+      query: (type, limit = '10') => `/${type}?${limit && `limit=${limit}`}`,
       providesTags: (result) =>
         result?.data
           ? [
@@ -20,7 +23,10 @@ export const animeApi = createApi({
             ]
           : [{ type: 'Anime', id: 'ANIMELIST' }],
     }),
+    getSingleAnime: build.query<ISingleAnimeResponse, IChooseAnimeOrManga>({
+      query: ({ id, type }) => `/${type}/${id}`,
+    }),
   }),
 });
 
-export const { useGetListQuery } = animeApi;
+export const { useGetListQuery, useGetSingleAnimeQuery } = animeApi;

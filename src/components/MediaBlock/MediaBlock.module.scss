@@ -1,0 +1,19 @@
+.mediaBlock {
+  max-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(12);
+}
+
+.image {
+  max-width: rem(250);
+  max-height: rem(370);
+}
+
+.buttons__block {
+  display: flex;
+  flex-direction: column;
+  padding: rem(12);
+  row-gap: rem(12);
+  border: 1px solid $lightBlueColor;
+}

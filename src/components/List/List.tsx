@@ -11,7 +11,7 @@ export default function List({ type }: { type: 'anime' | 'manga' }) {
     <ul className={styles.list}>
       {isLoading && <div>Loading...</div>}
       {data?.data.map((item) => {
-        return <Item key={item.mal_id} item={item} />;
+        return <Item key={item.mal_id} item={item} type={type} />;
       })}
     </ul>
   );

@@ -3,6 +3,10 @@ export interface IAnimeResponse {
   data: ISingleAnime[];
 }
 
+export interface ISingleAnimeResponse {
+  data: ISingleAnime;
+}
+
 export interface Pagination {
   last_visible_page: number;
   has_next_page: boolean;
@@ -48,6 +52,7 @@ export interface ISingleAnime {
   producers: IProducer[];
   licensors: ILicensor[];
   studios: IStudio[];
+  authors: IAuthors[];
   genres: IGenre[];
   themes: ITheme[];
 }
@@ -153,4 +158,27 @@ export interface ITheme {
   type: string;
   name: string;
   url: string;
+}
+
+export interface IChooseAnimeOrManga {
+  id: string;
+  type: 'anime' | 'manga';
+}
+
+export interface IAuthors {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+}
+
+export interface IAnimeDescriptions {
+  type: null | string;
+  episodes: null | number;
+  genres: null | string;
+  status: null | string;
+  aired: null | string;
+  duration: null | string;
+  rating: null | string;
+  studios: null | string;
 }

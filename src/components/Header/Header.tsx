@@ -20,7 +20,7 @@ export default function Header() {
           <nav className={styles.menu__navigation}>
             <ul className={styles.menu__list}>
               {headerLinks.map((link, index) => (
-                <li className={styles.menu__item}>
+                <li key={link} className={styles.menu__item}>
                   <Link
                     className={pathName === link ? `${styles.active}` : ''}
                     href={link}
@@ -35,7 +35,7 @@ export default function Header() {
             <DefaultInput placeholder="Search Anime, Manga and Characters" />
           </div>
           <div className={styles.logIn}>
-            <DefaultButton>Log In</DefaultButton>
+            <DefaultButton className="">Log In</DefaultButton>
           </div>
         </div>
       </div>

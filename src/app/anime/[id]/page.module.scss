@@ -1,0 +1,8 @@
+.anime {
+  &__body {
+    display: flex;
+    column-gap: rem(16);
+    padding: rem(16);
+    background-color: #fff;
+  }
+}

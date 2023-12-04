@@ -1,15 +1,22 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ISingleAnime } from '@/types/IAnime';
 import styles from './Item.module.scss';
 import notFoundImage from '../../../public/not-found-image.jpeg';
 
-export default function Item({ item }: { item: ISingleAnime }) {
+export default function Item({
+  item,
+  type,
+}: {
+  item: ISingleAnime;
+  type: string;
+}) {
   const imageWebp = item.images.webp.large_image_url;
   const imageJpg = item.images.jpg.large_image_url;
 
   return (
     <li className={styles.item}>
-      <div className={styles.image}>
+      <Link href={`/${type}/${item.mal_id}`} className={styles.image}>
         <Image
           src={imageWebp || imageJpg || notFoundImage}
           width={150}
@@ -17,13 +24,18 @@ export default function Item({ item }: { item: ISingleAnime }) {
           alt={item.title}
           objectFit="contain"
         />
-      </div>
+      </Link>
       <div className={styles.body}>
-        <p className={styles.title}>{item.title}</p>
+        <Link href={`/${type}/${item.mal_id}`} className={styles.title}>
+          {item.title}
+        </Link>
         <p className={styles.title__jap}>{item.title_japanese}</p>
         <div className={styles.genres}>
           {Object.values(item.genres).map((genre) => (
             <span>{genre.name}</span>
+          ))}
+          {Object.values(item.themes).map((theme) => (
+            <span>{theme.name}</span>
           ))}
         </div>
         <p className={styles.description}>

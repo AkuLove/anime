@@ -1,0 +1,29 @@
+.descriptionBlock {
+  width: 100%;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  border-bottom: rem(1) solid $lightBlueColor;
+}
+
+.description {
+  display: flex;
+
+  &__title {
+    flex: 1 1 40%;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__value {
+    flex: 1 1 60%;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
