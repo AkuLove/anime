@@ -172,13 +172,18 @@ export interface IAuthors {
   url: string;
 }
 
+export interface IGenres {
+  id: number;
+  name: string;
+}
+
 export interface IAnimeDescriptions {
   type: null | string;
   episodes: null | number;
-  genres: null | string;
+  genres: null | IGenres[];
   status: null | string;
   aired: null | string;
   duration: null | string;
   rating: null | string;
-  studios: null | string;
+  studios: null | IGenres[];
 }

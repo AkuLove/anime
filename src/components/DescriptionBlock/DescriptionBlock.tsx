@@ -1,71 +1,62 @@
-import React from 'react';
-import { descriptions } from '@/constants';
+import React, { useEffect, useState } from 'react';
 import styles from './DescriptionBlock.module.scss';
-import { ISingleAnime } from '@/types/IAnime';
+import { IAnimeDescriptions, IGenres, ISingleAnime } from '@/types/IAnime';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { checkValidAnimeDescription } from '@/store/AnimeSlice';
+import { checkValidMangaDescription } from '@/store/MangaSlice';
+import { IMangaDescriptions, ISingleManga } from '@/types/IManga';
 
-export default function DescriptionBlock({ item }: { item: ISingleAnime }) {
+export default function DescriptionBlock({
+  item,
+  type,
+}: {
+  item: ISingleAnime | ISingleManga;
+  type: 'anime' | 'manga';
+}) {
   const titleEng = item.title_english;
   const titleJap = item.title_japanese;
+  const dispatch = useAppDispatch();
+  const animeDescriptions = useAppSelector((state) => state.anime.descriptions);
+  const mangaDescriptions = useAppSelector((state) => state.manga.descriptions);
+  const [key, setKey] = useState<string[] | null>(null);
 
-  const checkDescription = (description: string) => {
-    switch (description) {
-      case 'studios':
-        if (item[description]) {
-          return (
-            <>
-              <p className={styles.description__title}>{description}</p>
-              <p className={styles.description__value}>
-                {item[description] &&
-                  item[description].map((studio) => <span>{studio.name}</span>)}
-              </p>
-            </>
-          );
-        }
-        return '';
-      case 'authors':
-        if (item[description]) {
-          return (
-            <>
-              <p className={styles.description__title}>{description}</p>
-              <p className={styles.description__value}>
-                {item[description] &&
-                  item[description].map((studio) => <span>{studio.name}</span>)}
-              </p>
-            </>
-          );
-        }
-        return '';
-      case 'genres':
-        if (item[description]) {
-          return (
-            <>
-              <p className={styles.description__title}>{description}</p>
-              <p className={styles.description__value}>
-                {item[description] &&
-                  item[description].map((genre) => <span>{genre.name}</span>)}
-                {item.themes &&
-                  item.themes.map((theme) => <span>{theme.name}</span>)}
-              </p>
-            </>
-          );
-        }
-        return '';
-      case 'aired':
-        if (item[description]) {
-          return (
-            <>
-              <p className={styles.description__title}>{description}</p>
-              <p className={styles.description__value}>
-                {item[description] && item[description].string}
-              </p>
-            </>
-          );
-        }
-        return '';
-
-      default:
-        return '';
+  useEffect(() => {
+    if (type === 'anime') {
+      item = item as ISingleAnime;
+      dispatch(checkValidAnimeDescription(item));
+      setKey(Object.keys(animeDescriptions));
+    } else {
+      item = item as ISingleManga;
+      dispatch(checkValidMangaDescription(item));
+      setKey(Object.keys(mangaDescriptions));
     }
+  }, []);
+
+  const checkAnimeOrManga = (
+    checkedItem: IAnimeDescriptions | IMangaDescriptions
+  ) => {
+    return (
+      key &&
+      Object.values(checkedItem).map(
+        (description: string | IGenres[], index) =>
+          description !== null && !Array.isArray(description) ? (
+            <div key={key[index]} className={styles.description}>
+              <p className={styles.description__title}>{key[index]}</p>
+              <p className={styles.description__value}>{description}</p>
+            </div>
+          ) : (
+            <div key={key[index]} className={styles.description}>
+              <p className={styles.description__title}>{key[index]}</p>
+              <p className={styles.description__value}>
+                {description.map((arrayDescription) => (
+                  <span key={arrayDescription.id}>{arrayDescription.name}</span>
+                ))}
+              </p>
+            </div>
+          )
+      )
+    );
   };
 
   return (
@@ -76,22 +67,9 @@ export default function DescriptionBlock({ item }: { item: ISingleAnime }) {
         {titleJap && <h3 className={styles.main__title}>{titleJap}</h3>}
       </div>
       <div className={styles.descriptions}>
-        {descriptions.map((description) =>
-          description in item &&
-          item[description as keyof typeof item] !== null &&
-          typeof item[description as keyof typeof item] !== 'object' ? (
-            <div className={styles.description}>
-              <p className={styles.description__title}>{description}</p>
-              <p className={styles.description__value}>
-                {item[description as keyof typeof item] as React.ReactNode}
-              </p>
-            </div>
-          ) : (
-            <div className={styles.description}>
-              {checkDescription(description)}
-            </div>
-          )
-        )}
+        {type === 'anime'
+          ? checkAnimeOrManga(animeDescriptions)
+          : checkAnimeOrManga(mangaDescriptions)}
       </div>
     </div>
   );

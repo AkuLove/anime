@@ -22,7 +22,6 @@ export default function Item({
           width={150}
           height={210}
           alt={item.title}
-          objectFit="contain"
         />
       </Link>
       <div className={styles.body}>
@@ -32,10 +31,10 @@ export default function Item({
         <p className={styles.title__jap}>{item.title_japanese}</p>
         <div className={styles.genres}>
           {Object.values(item.genres).map((genre) => (
-            <span>{genre.name}</span>
+            <span key={genre.mal_id}>{genre.name}</span>
           ))}
           {Object.values(item.themes).map((theme) => (
-            <span>{theme.name}</span>
+            <span key={theme.name}>{theme.name}</span>
           ))}
         </div>
         <p className={styles.description}>

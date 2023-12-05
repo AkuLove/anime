@@ -7,10 +7,7 @@ import NotFoundImage from '../../../../public/not-found-image.jpeg';
 import DescriptionBlock from '@/components/DescriptionBlock/DescriptionBlock';
 
 export default function SingleAnime({ params }: { params: { id: string } }) {
-  const { data, isLoading } = useGetSingleAnimeQuery({
-    id: params.id,
-    type: 'anime',
-  });
+  const { data, isLoading } = useGetSingleAnimeQuery(params.id);
   const anime = data?.data;
   const imageWebp = anime?.images.webp.large_image_url;
   const imageJpg = anime?.images.jpg.large_image_url;
@@ -25,7 +22,7 @@ export default function SingleAnime({ params }: { params: { id: string } }) {
               title={anime.title}
               image={imageWebp || imageJpg || NotFoundImage}
             />
-            <DescriptionBlock item={anime} />
+            <DescriptionBlock item={anime} type="anime" />
           </div>
         )}
       </div>

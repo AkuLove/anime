@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './List.module.scss';
-import { useGetListQuery } from '@/services/animeApi';
+import { useGetListQuery } from '@/services/listApi';
 import Item from '../Item/Item';
 
 export default function List({ type }: { type: 'anime' | 'manga' }) {
@@ -10,9 +10,9 @@ export default function List({ type }: { type: 'anime' | 'manga' }) {
   return (
     <ul className={styles.list}>
       {isLoading && <div>Loading...</div>}
-      {data?.data.map((item) => {
-        return <Item key={item.mal_id} item={item} type={type} />;
-      })}
+      {data?.data.map((item) => (
+        <Item key={item.title} item={item} type={type} />
+      ))}
     </ul>
   );
 }

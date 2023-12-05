@@ -11,6 +11,10 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { animeApi } from '@/services/animeApi';
+import animeReducer from './AnimeSlice';
+import mangaReducer from './MangaSlice';
+import { mangaApi } from '@/services/mangaApi';
+import { listApi } from '@/services/listApi';
 
 const persistConfig = {
   key: 'root',
@@ -19,6 +23,10 @@ const persistConfig = {
 
 const reducers = combineReducers({
   [animeApi.reducerPath]: animeApi.reducer,
+  [mangaApi.reducerPath]: mangaApi.reducer,
+  [listApi.reducerPath]: listApi.reducer,
+  anime: animeReducer,
+  manga: mangaReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -30,7 +38,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(animeApi.middleware),
+    }).concat(listApi.middleware, animeApi.middleware, mangaApi.middleware),
 });
 
 export const persistor = persistStore(store);
