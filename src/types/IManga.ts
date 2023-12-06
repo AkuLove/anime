@@ -1,12 +1,11 @@
 import {
-  IGenre,
   IGenres,
-  IProp,
-  ITheme,
+  IItem,
+  IPublished,
   ITitle,
   Images,
   Pagination,
-} from './IAnime';
+} from './ICommon';
 
 export interface ISingleMangaResonse {
   pagination: Pagination;
@@ -27,7 +26,7 @@ export interface ISingleManga {
   volumes: number;
   status: string;
   publishing: boolean;
-  published: Published;
+  published: IPublished;
   score: number;
   scored: number;
   scored_by: number;
@@ -37,31 +36,10 @@ export interface ISingleManga {
   favorites: number;
   synopsis: string;
   background: string;
-  authors: Author[];
-  serializations: Serialization[];
-  genres: IGenre[];
-  themes: ITheme[];
-}
-
-export interface Published {
-  from: string;
-  to: string;
-  prop: IProp;
-  string: string;
-}
-
-export interface Author {
-  mal_id: number;
-  type: string;
-  name: string;
-  url: string;
-}
-
-export interface Serialization {
-  mal_id: number;
-  type: string;
-  name: string;
-  url: string;
+  authors: IItem[];
+  serializations: IItem[];
+  genres: IItem[];
+  themes: IItem[];
 }
 
 export interface IMangaDescriptions {

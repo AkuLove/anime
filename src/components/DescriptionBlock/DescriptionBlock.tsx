@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './DescriptionBlock.module.scss';
-import { IAnimeDescriptions, IGenres, ISingleAnime } from '@/types/IAnime';
+import { IAnimeDescriptions, ISingleAnime } from '@/types/IAnime';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { checkValidAnimeDescription } from '@/store/AnimeSlice';
 import { checkValidMangaDescription } from '@/store/MangaSlice';
 import { IMangaDescriptions, ISingleManga } from '@/types/IManga';
+import { IGenres } from '@/types/ICommon';
 
 export default function DescriptionBlock({
   item,
@@ -63,8 +64,8 @@ export default function DescriptionBlock({
     <div className={styles.descriptionBlock}>
       <div className={styles.titles}>
         <h1 className={styles.main__title}>{item.title}</h1>
-        {titleEng && <h2 className={styles.main__title}>{titleEng}</h2>}
-        {titleJap && <h3 className={styles.main__title}>{titleJap}</h3>}
+        {titleEng && <h2 className={styles.second__title}>{titleEng}</h2>}
+        {titleJap && <h3 className={styles.second__title}>{titleJap}</h3>}
       </div>
       <div className={styles.descriptions}>
         {type === 'anime'

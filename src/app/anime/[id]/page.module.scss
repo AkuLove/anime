@@ -1,8 +1,19 @@
 .anime {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: rem(16);
+  }
+
   &__body {
     display: flex;
     column-gap: rem(16);
-    padding: rem(16);
-    background-color: #fff;
+    margin-bottom: rem(20);
   }
+}
+
+.synopsis {
+  font-size: rem(18);
+  white-space: pre-line;
 }

@@ -1,3 +1,12 @@
+import {
+  IGenres,
+  IItem,
+  IPublished,
+  ITitle,
+  Images,
+  Pagination,
+} from './ICommon';
+
 export interface IAnimeResponse {
   pagination: Pagination;
   data: ISingleAnime[];
@@ -5,19 +14,6 @@ export interface IAnimeResponse {
 
 export interface ISingleAnimeResponse {
   data: ISingleAnime;
-}
-
-export interface Pagination {
-  last_visible_page: number;
-  has_next_page: boolean;
-  current_page: number;
-  items: IAnime;
-}
-
-export interface IAnime {
-  count: number;
-  total: number;
-  per_page: number;
 }
 
 export interface ISingleAnime {
@@ -35,7 +31,7 @@ export interface ISingleAnime {
   episodes: number;
   status: string;
   airing: boolean;
-  aired: IAired;
+  aired: IPublished;
   duration: string;
   rating: string;
   score: number;
@@ -49,29 +45,12 @@ export interface ISingleAnime {
   season: string;
   year: number;
   broadcast: IBroadcast;
-  producers: IProducer[];
-  licensors: ILicensor[];
-  studios: IStudio[];
-  authors: IAuthors[];
-  genres: IGenre[];
-  themes: ITheme[];
-}
-
-export interface Images {
-  jpg: IJpg;
-  webp: IWebp;
-}
-
-export interface IJpg {
-  image_url: string;
-  small_image_url: string;
-  large_image_url: string;
-}
-
-export interface IWebp {
-  image_url: string;
-  small_image_url: string;
-  large_image_url: string;
+  producers: IItem[];
+  licensors: IItem[];
+  studios: IItem[];
+  authors: IItem[];
+  genres: IItem[];
+  themes: IItem[];
 }
 
 export interface ITrailer {
@@ -89,92 +68,15 @@ export interface IImages2 {
   maximum_image_url: string;
 }
 
-export interface ITitle {
-  type: string;
-  title: string;
-}
-
-export interface IAired {
-  from: string;
-  to: string;
-  prop: IProp;
-  string: string;
-}
-
-export interface IProp {
-  from: IFrom;
-  to: ITo;
-}
-
-export interface IFrom {
-  day: number;
-  month: number;
-  year: number;
-}
-
-export interface ITo {
-  day: number;
-  month: number;
-  year: number;
-}
-
 export interface IBroadcast {
   day: string;
   time: string;
   timezone: string;
   string: string;
 }
-
-export interface IProducer {
-  mal_id: number;
-  type: string;
-  name: string;
-  url: string;
-}
-
-export interface ILicensor {
-  mal_id: number;
-  type: string;
-  name: string;
-  url: string;
-}
-
-export interface IStudio {
-  mal_id: number;
-  type: string;
-  name: string;
-  url: string;
-}
-
-export interface IGenre {
-  mal_id: number;
-  type: string;
-  name: string;
-  url: string;
-}
-
-export interface ITheme {
-  mal_id: number;
-  type: string;
-  name: string;
-  url: string;
-}
-
 export interface IChooseAnimeOrManga {
   id: string;
   type: 'anime' | 'manga';
-}
-
-export interface IAuthors {
-  mal_id: number;
-  type: string;
-  name: string;
-  url: string;
-}
-
-export interface IGenres {
-  id: number;
-  name: string;
 }
 
 export interface IAnimeDescriptions {

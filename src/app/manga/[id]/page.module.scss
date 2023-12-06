@@ -1,8 +1,19 @@
 .manga {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(20);
+    background-color: #fff;
+    padding: rem(16);
+  }
+
   &__body {
     display: flex;
     column-gap: rem(16);
-    padding: rem(16);
-    background-color: #fff;
   }
+}
+
+.synopsis {
+  font-size: rem(18);
+  white-space: pre-line;
 }

@@ -1,0 +1,16 @@
+.relations {
+  &__title {
+    font-weight: 700;
+    font-size: rem(28);
+    border-bottom: rem(1) solid $lightBlueColor;
+    padding-bottom: rem(8);
+    margin-bottom: rem(16);
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: rem(40);
+    row-gap: rem(20);
+  }
+}

@@ -38,7 +38,9 @@ export default function Item({
           ))}
         </div>
         <p className={styles.description}>
-          {item.synopsis.replace('[Written by MAL Rewrite]', '')}
+          {item.synopsis
+            .replace('[Written by MAL Rewrite]', '')
+            .replace('(Source: Funimation)', '')}
         </p>
       </div>
     </li>
