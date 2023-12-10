@@ -1,14 +1,29 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import DefaultButton from '../UI/DefaultButton/DefaultButton';
 import DefaultInput from '../UI/DefaultInput.module.scss/DefaultInput';
 import styles from './Header.module.scss';
 import { headerLinks, headerPages } from '@/constants';
+import { useGetRandomAnimeMutation } from '@/services/animeApi';
+import { useAppSelector } from '@/hooks/useAppSelector';
 
 export default function Header() {
   const pathName = usePathname();
+  const router = useRouter();
+  const isPageLoading = useAppSelector(
+    (state) => state.anime.isSingleAnimePageLoading
+  );
+
+  const [randomAnime, { isLoading }] = useGetRandomAnimeMutation();
+
+  const getRandomAnime = async () => {
+    const id = await randomAnime()
+      .unwrap()
+      .then((res) => res.data.mal_id);
+    router.push(`/anime/${id}`);
+  };
 
   return (
     <footer className={styles.header}>
@@ -29,6 +44,13 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
+              <button
+                onClick={() => !isLoading && !isPageLoading && getRandomAnime()}
+                type="button"
+                className={styles.menu__item}
+              >
+                Random Anime
+              </button>
             </ul>
           </nav>
           <div className={styles.searchbar}>

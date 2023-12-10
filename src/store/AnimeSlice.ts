@@ -14,6 +14,7 @@ const animeSlice = createSlice({
       rating: null,
       studios: [],
     } as IAnimeDescriptions,
+    isSingleAnimePageLoading: false,
   },
   reducers: {
     checkValidAnimeDescription(state, action: PayloadAction<ISingleAnime>) {
@@ -56,9 +57,13 @@ const animeSlice = createSlice({
         });
       }
     },
+    setLoadingAnime(state, action: PayloadAction<boolean>) {
+      state.isSingleAnimePageLoading = action.payload;
+    },
   },
 });
 
-export const { checkValidAnimeDescription } = animeSlice.actions;
+export const { checkValidAnimeDescription, setLoadingAnime } =
+  animeSlice.actions;
 
 export default animeSlice.reducer;

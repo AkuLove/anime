@@ -16,7 +16,17 @@ export const animeApi = createApi({
     getAnimeRelations: build.query<IAnimeRelations, string>({
       query: (id) => `/anime/${id}/relations`,
     }),
+    getRandomAnime: build.mutation<ISingleAnimeResponse, void>({
+      query: () => ({
+        url: '/random/anime',
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useGetSingleAnimeQuery, useGetAnimeRelationsQuery } = animeApi;
+export const {
+  useGetSingleAnimeQuery,
+  useGetAnimeRelationsQuery,
+  useGetRandomAnimeMutation,
+} = animeApi;

@@ -63,7 +63,9 @@ export default function DescriptionBlock({
 
   return (
     <div className={styles.descriptionBlock}>
-      <RatingBlock score={item.score} scoredBy={item.scored_by} />
+      {item.score && (
+        <RatingBlock score={item.score} scoredBy={item.scored_by} />
+      )}
       <div className={styles.titles}>
         <h1 className={styles.main__title}>{item.title}</h1>
         {titleEng && <h2 className={styles.second__title}>{titleEng}</h2>}

@@ -35,9 +35,10 @@ export default function SingleManga({ params }: { params: { id: string } }) {
               <DescriptionBlock item={manga} type="manga" />
             </div>
             <p className={styles.synopsis}>
-              {manga.synopsis
-                .replace('[Written by MAL Rewrite]', '')
-                .replace('(Source: Funimation)', '')}
+              {manga.synopsis &&
+                manga.synopsis
+                  .replace('[Written by MAL Rewrite]', '')
+                  .replace('(Source: Funimation)', '')}
             </p>
             <RelationsBlock
               isLoading={isMangaRelationsLoading}
