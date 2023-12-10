@@ -7,6 +7,7 @@ import { checkValidAnimeDescription } from '@/store/AnimeSlice';
 import { checkValidMangaDescription } from '@/store/MangaSlice';
 import { IMangaDescriptions, ISingleManga } from '@/types/IManga';
 import { IGenres } from '@/types/ICommon';
+import RatingBlock from '../RatingBlock/RatingBlock';
 
 export default function DescriptionBlock({
   item,
@@ -62,6 +63,7 @@ export default function DescriptionBlock({
 
   return (
     <div className={styles.descriptionBlock}>
+      <RatingBlock score={item.score} scoredBy={item.scored_by} />
       <div className={styles.titles}>
         <h1 className={styles.main__title}>{item.title}</h1>
         {titleEng && <h2 className={styles.second__title}>{titleEng}</h2>}

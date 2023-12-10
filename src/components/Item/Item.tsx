@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ISingleAnime } from '@/types/IAnime';
 import styles from './Item.module.scss';
 import notFoundImage from '../../../public/not-found-image.jpeg';
+import ratingStar from '../../../public/ratingStar.svg';
 
 export default function Item({
   item,
@@ -16,6 +17,10 @@ export default function Item({
 
   return (
     <li className={styles.item}>
+      <div className={styles.rating}>
+        <Image src={ratingStar} width={30} height={30} alt="rating" />
+        {Math.round(item.score * 10) / 10}
+      </div>
       <Link href={`/${type}/${item.mal_id}`} className={styles.image}>
         <Image
           src={imageWebp || imageJpg || notFoundImage}

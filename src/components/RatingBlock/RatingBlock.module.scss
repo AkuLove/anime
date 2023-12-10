@@ -1,0 +1,12 @@
+.rating {
+  display: flex;
+  column-gap: rem(8);
+  font-size: rem(12);
+  border-right: rem(1) solid $lightBlueColor;
+  max-width: fit-content;
+  padding-right: rem(8);
+
+  span {
+    font-size: rem(20);
+  }
+}

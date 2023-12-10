@@ -11,22 +11,29 @@ export default function RelationsBlock({
 }) {
   return (
     <div className={styles.relations}>
-      <p className={styles.relations__title}>Relations</p>
-      <nav>
-        <ul className={styles.relations__list}>
-          {isLoading && <div>Loading...</div>}
-          {relations &&
-            relations.map((relation) =>
-              relation.entry.map((item) => (
-                <RelationsItem
-                  key={item.name}
-                  item={item}
-                  relation={relation}
-                />
-              ))
-            )}
-        </ul>
-      </nav>
+      {relations?.length !== 0 && (
+        <>
+          <p className={styles.relations__title}>Relations</p>
+          <nav>
+            <ul className={styles.relations__list}>
+              {isLoading && <div>Loading...</div>}
+              {relations &&
+                relations.map((relation) =>
+                  relation.entry.map(
+                    (item) =>
+                      item.name && (
+                        <RelationsItem
+                          key={item.name}
+                          item={item}
+                          relation={relation}
+                        />
+                      )
+                  )
+                )}
+            </ul>
+          </nav>
+        </>
+      )}
     </div>
   );
 }
