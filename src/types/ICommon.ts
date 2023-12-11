@@ -56,3 +56,9 @@ export interface IGenres {
   id: number;
   name: string;
 }
+
+export interface IScore {
+  score: number;
+  votes: number;
+  percentage: number;
+}

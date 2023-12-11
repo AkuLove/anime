@@ -1,5 +1,4 @@
 .mediaBlock {
-  max-width: fit-content;
   display: flex;
   flex-direction: column;
   row-gap: rem(12);
@@ -11,9 +10,19 @@
 }
 
 .buttons__block {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: rem(12);
   row-gap: rem(12);
   border: 1px solid $lightBlueColor;
+}
+
+.peoplesList {
+  align-self: center;
+  border-bottom: rem(1) dashed $deepBlueColor;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

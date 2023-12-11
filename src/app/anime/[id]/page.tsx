@@ -35,6 +35,8 @@ export default function SingleAnime({ params }: { params: { id: string } }) {
               <MediaBlock
                 title={anime.title}
                 image={imageWebp || imageJpg || NotFoundImage}
+                id={anime.mal_id}
+                type="anime"
               />
               <DescriptionBlock item={anime} type="anime" />
             </div>

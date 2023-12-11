@@ -31,6 +31,8 @@ export default function SingleManga({ params }: { params: { id: string } }) {
               <MediaBlock
                 title={manga.title}
                 image={imageWebp || imageJpg || NotFoundImage}
+                id={manga.mal_id}
+                type="manga"
               />
               <DescriptionBlock item={manga} type="manga" />
             </div>

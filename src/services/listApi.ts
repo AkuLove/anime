@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IAnimeResponse } from '@/types/IAnime';
+import { IAnimeStatisticsResponse } from '@/types/IAnimeStatistics';
+import { IMangaStatisticsResponse } from '@/types/IMangaStatistics';
 
 export const listApi = createApi({
   reducerPath: 'listApi',
@@ -19,7 +21,13 @@ export const listApi = createApi({
             ]
           : [{ type: 'List', id: 'LIST' }],
     }),
+    getStatistics: build.query<
+      IAnimeStatisticsResponse | IMangaStatisticsResponse,
+      { type: 'anime' | 'manga'; id: string }
+    >({
+      query: ({ type, id }) => `/${type}/${id}/statistics`,
+    }),
   }),
 });
 
-export const { useGetListQuery } = listApi;
+export const { useGetListQuery, useGetStatisticsQuery } = listApi;

@@ -1,0 +1,93 @@
+.statisticsBlock {
+  position: absolute;
+  top: rem(138);
+  @include adaptiveValue('left', 0, -32, 0);
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: 4px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-radius: rem(8);
+  width: 100%;
+  @include adaptiveValue('min-width', 500, 320, 0);
+  @include adaptiveValue('font-size', 16, 14, 0);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(8);
+    padding: 0 rem(16);
+  }
+
+  &__body {
+    display: grid;
+    column-gap: rem(16);
+    padding: 0 rem(16);
+    @include adaptiveValue('column-gap', 16, 8, 0);
+    grid-template-columns: 80px 1fr 100px;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 50px 1fr 100px;
+    }
+  }
+
+  div:empty {
+    display: none;
+  }
+}
+
+.title {
+  font-size: rem(18);
+  padding: rem(4) rem(16);
+  margin-bottom: rem(16);
+  background-color: $lightBlueColor;
+  font-weight: 700;
+}
+
+.subTitles {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  column-gap: rem(16);
+  padding: 0 rem(16);
+  font-weight: 700;
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 50px 1fr 100px;
+  }
+
+  &__people {
+    text-align: right;
+  }
+
+  &__percent {
+    text-align: center;
+  }
+}
+
+.peoples {
+  text-align: right;
+}
+
+.barRow {
+  background-color: $lightBlueColor;
+}
+
+.bar {
+  background-color: $deepBlueColor;
+  color: #fff;
+  min-width: rem(40);
+  text-align: right;
+  padding-right: rem(4);
+  border-radius: rem(4);
+}
+
+.category {
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.total {
+  padding: rem(16);
+  span {
+    border-bottom: rem(2) dashed $deepBlueColor;
+  }
+}
