@@ -23,6 +23,12 @@ export default function StatisticsBlock({
     return `${result}%`;
   };
 
+  const getItem = (item: string) => {
+    return statistics
+      ? (statistics[item as keyof typeof statistics] as number)
+      : 0;
+  };
+
   return (
     <div className={styles.statisticsBlock}>
       <p className={styles.title}>{title}</p>
@@ -36,35 +42,25 @@ export default function StatisticsBlock({
                   <p className={styles.subTitles__percent}>Percent</p>
                   <p className={styles.subTitles__list}>List</p>
                 </div>
-                {statisticsKeys.map((item, i) => (
+                {statisticsKeys.map((item) => (
                   <div key={item} className={styles.statisticsBlock__body}>
-                    {i < statisticsKeys.length - 2 ? (
+                    {item !== 'total' &&
+                    !Array.isArray(
+                      statistics[item as keyof typeof statistics]
+                    ) ? (
                       <>
-                        <p className={styles.peoples}>
-                          {
-                            statistics[
-                              item as keyof typeof statistics
-                            ] as number
-                          }
-                        </p>
+                        <p className={styles.peoples}>{getItem(item)}</p>
                         <div className={styles.barRow}>
                           <div
                             className={styles.bar}
                             style={{
                               width: calcBarWidth(
-                                statistics[
-                                  item as keyof typeof statistics
-                                ] as number,
+                                getItem(item),
                                 statistics.total
                               ),
                             }}
                           >
-                            {calcBarWidth(
-                              statistics[
-                                item as keyof typeof statistics
-                              ] as number,
-                              statistics.total
-                            )}
+                            {calcBarWidth(getItem(item), statistics.total)}
                           </div>
                         </div>
                         <p className={styles.category}>

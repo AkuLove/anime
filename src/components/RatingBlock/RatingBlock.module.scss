@@ -1,12 +1,25 @@
+.ratingBlock {
+  position: relative;
+}
+
 .rating {
   display: flex;
   column-gap: rem(8);
   font-size: rem(12);
   border-right: rem(1) solid $lightBlueColor;
-  max-width: fit-content;
   padding-right: rem(8);
 
   span {
     font-size: rem(20);
+  }
+}
+
+.peoplesList {
+  align-self: center;
+  max-width: fit-content;
+  border-bottom: rem(1) dashed $deepBlueColor;
+
+  &:hover {
+    cursor: pointer;
   }
 }
