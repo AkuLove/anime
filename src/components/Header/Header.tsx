@@ -26,7 +26,7 @@ export default function Header() {
   };
 
   return (
-    <footer className={styles.header}>
+    <header className={styles.header}>
       <div className="container">
         <div className={styles.body}>
           <div className={styles.logo}>
@@ -61,6 +61,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </footer>
+    </header>
   );
 }

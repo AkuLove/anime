@@ -1,0 +1,10 @@
+.character {
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr rem(150);
+    column-gap: rem(24);
+  }
+
+  // &__description {
+  // }
+}

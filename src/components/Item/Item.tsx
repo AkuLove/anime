@@ -2,14 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ISingleAnime } from '@/types/IAnime';
 import styles from './Item.module.scss';
-import notFoundImage from '../../../public/not-found-image.jpeg';
-import ratingStar from '../../../public/ratingStar.svg';
+import { ISingleManga } from '@/types/IManga';
 
 export default function Item({
   item,
   type,
 }: {
-  item: ISingleAnime;
+  item: ISingleAnime | ISingleManga;
   type: string;
 }) {
   const imageWebp = item.images.webp.large_image_url;
@@ -18,12 +17,12 @@ export default function Item({
   return (
     <li className={styles.item}>
       <div className={styles.rating}>
-        <Image src={ratingStar} width={30} height={30} alt="rating" />
+        <Image src="/ratingStar.svg" width={30} height={30} alt="rating" />
         {Math.round(item.score * 10) / 10}
       </div>
       <Link href={`/${type}/${item.mal_id}`} className={styles.image}>
         <Image
-          src={imageWebp || imageJpg || notFoundImage}
+          src={imageWebp || imageJpg || '/not-found-image.jpeg'}
           width={150}
           height={210}
           alt={item.title}

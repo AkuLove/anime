@@ -1,0 +1,25 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(4);
+  font-weight: 700;
+  font-size: rem(18);
+
+  @media (max-width: em(540)) {
+    img {
+      width: 100%;
+    }
+  }
+
+  &:hover .name {
+    text-decoration: underline;
+  }
+}
+
+.name {
+  color: $deepBlueColor;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

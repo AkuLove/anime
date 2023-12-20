@@ -1,0 +1,18 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(5, rem(150));
+  justify-content: space-between;
+  gap: rem(24);
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(4, rem(150));
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: repeat(3, rem(150));
+  }
+
+  @media (max-width: em(540)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

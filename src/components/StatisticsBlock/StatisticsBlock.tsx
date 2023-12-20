@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { useGetStatisticsQuery } from '@/services/listApi';
 import styles from './StatisticsBlock.module.scss';

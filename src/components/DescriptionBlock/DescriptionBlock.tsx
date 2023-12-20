@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import styles from './DescriptionBlock.module.scss';
 import { IAnimeDescriptions, ISingleAnime } from '@/types/IAnime';

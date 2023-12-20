@@ -2,13 +2,14 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IAnimeResponse } from '@/types/IAnime';
 import { IAnimeStatisticsResponse } from '@/types/IAnimeStatistics';
 import { IMangaStatisticsResponse } from '@/types/IMangaStatistics';
+import { IMangaResponse } from '@/types/IManga';
 
 export const listApi = createApi({
   reducerPath: 'listApi',
   tagTypes: ['List'],
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.jikan.moe/v4/' }),
   endpoints: (build) => ({
-    getList: build.query<IAnimeResponse, string>({
+    getList: build.query<IAnimeResponse | IMangaResponse, string>({
       query: (type, limit = '10') => `/${type}?${limit && `limit=${limit}`}`,
       providesTags: (result) =>
         result?.data

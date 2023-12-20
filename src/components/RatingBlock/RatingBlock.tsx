@@ -1,7 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import { useState } from 'react';
 import styles from './RatingBlock.module.scss';
-import ratingStar from '../../../public/ratingStar.svg';
 import RatingStats from '../RatingStats/RatingStats';
 
 export default function RatingBlock({
@@ -20,7 +21,7 @@ export default function RatingBlock({
   return (
     <div className={styles.ratingBlock}>
       <div className={styles.rating}>
-        <Image src={ratingStar} width={32} height={36} alt="rating star" />
+        <Image src="/ratingStar.svg" width={32} height={36} alt="rating star" />
         <div className={styles.stats}>
           <p>
             <span>{Math.round(score * 10) / 10}</span>/10

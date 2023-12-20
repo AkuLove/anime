@@ -7,8 +7,12 @@ import {
   Pagination,
 } from './ICommon';
 
-export interface ISingleMangaResonse {
+export interface IMangaResponse {
   pagination: Pagination;
+  data: ISingleManga[];
+}
+
+export interface ISingleMangaResponse {
   data: ISingleManga;
 }
 
