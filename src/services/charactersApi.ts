@@ -14,7 +14,7 @@ export const charactersApi = createApi({
       { type?: string; limit?: string }
     >({
       query: ({ type = 'characters', limit = '10' }) =>
-        `/${type}?${limit && `limit=${limit}`}`,
+        `/top/${type}?${limit && `limit=${limit}`}`,
       providesTags: (result) =>
         result?.data
           ? [

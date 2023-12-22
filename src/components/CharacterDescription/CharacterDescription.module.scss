@@ -1,0 +1,16 @@
+.description {
+  background-color: #fff;
+  padding: rem(16);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: rem(18);
+  font-weight: 700;
+  padding-bottom: rem(4);
+}
+
+.text {
+  padding-bottom: rem(12);
+}

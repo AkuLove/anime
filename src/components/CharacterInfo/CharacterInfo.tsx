@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './CharacterInfo.module.scss';
 import { ISingleCharacterFull } from '@/types/ICharacters';
+import { useAppSelector } from '@/hooks/useAppSelector';
 
 export default function CharacterInfo({
   item,
@@ -9,17 +10,46 @@ export default function CharacterInfo({
 }) {
   const imageWebp = item.images.webp.image_url;
   const imageJpg = item.images.jpg.image_url;
+  const info = useAppSelector((state) => state.charaters.characterInfo);
+  const propertys = Object.keys(info);
+  const values = Object.values(info);
 
   return (
     <div className={styles.item}>
       <div className={styles.item__body}>
-        <p>{item.name}</p>
+        <p className={styles.name}>
+          {item.name}
+          <span className={styles.name__jap}> ({item.name_kanji})</span>
+        </p>
         <Image
           src={imageWebp || imageJpg || '/not-found-image.jpeg'}
-          width={150}
-          height={210}
+          width={220}
+          height={310}
           alt={item.name}
         />
+        <div className={styles.names}>
+          {item.nicknames.map((name) => (
+            <p className={styles.nickname} key={name}>
+              {name}
+            </p>
+          ))}
+        </div>
+        <div>
+          {propertys.map((property, i) => (
+            <div key={property} className={styles.info}>
+              <div className={styles.info__body}>
+                <p className={styles.info__title}>{property}</p>
+                <div className={styles.info__list}>
+                  {values[i].split(';').map((value) => (
+                    <p key={value} className={styles.info__specs}>
+                      {value}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

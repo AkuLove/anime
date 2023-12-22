@@ -5,7 +5,10 @@ import styles from './CharactersList.module.scss';
 import { useGetCharactersListQuery } from '@/services/charactersApi';
 
 export default function CharactersList() {
-  const { data, isLoading } = useGetCharactersListQuery({ type: 'characters' });
+  const { data, isLoading } = useGetCharactersListQuery({
+    type: 'characters',
+    limit: '20',
+  });
 
   return (
     <ul className={styles.list}>

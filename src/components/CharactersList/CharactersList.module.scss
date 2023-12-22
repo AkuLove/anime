@@ -1,8 +1,10 @@
 .list {
+  background-color: #fff;
   display: grid;
   grid-template-columns: repeat(5, rem(150));
   justify-content: space-between;
   gap: rem(24);
+  padding: rem(16);
 
   @media (max-width: $tablet) {
     grid-template-columns: repeat(4, rem(150));

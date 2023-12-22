@@ -10,7 +10,8 @@ export const listApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.jikan.moe/v4/' }),
   endpoints: (build) => ({
     getList: build.query<IAnimeResponse | IMangaResponse, string>({
-      query: (type, limit = '10') => `/${type}?${limit && `limit=${limit}`}`,
+      query: (type, limit = '10') =>
+        `/top/${type}?${limit && `limit=${limit}`}`,
       providesTags: (result) =>
         result?.data
           ? [
