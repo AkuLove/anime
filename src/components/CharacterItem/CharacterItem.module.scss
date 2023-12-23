@@ -5,6 +5,13 @@
   font-weight: 700;
   font-size: rem(18);
 
+  img {
+    background: url('/loading.gif') center center no-repeat;
+    background-size: 30%;
+    max-width: rem(150);
+    max-height: rem(220);
+  }
+
   @media (max-width: em(540)) {
     img {
       width: 100%;
@@ -16,9 +23,29 @@
   }
 }
 
+.body {
+  display: flex;
+  column-gap: rem(8);
+  p {
+    font-size: rem(16);
+    font-weight: 400;
+    opacity: 0.8;
+  }
+}
+
+.characters__block {
+  max-width: rem(85);
+  width: rem(85);
+  max-height: rem(120);
+  height: rem(120);
+}
+
 .name {
   color: $deepBlueColor;
-
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
   &:hover {
     text-decoration: underline;
   }

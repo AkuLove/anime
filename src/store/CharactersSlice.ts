@@ -7,12 +7,12 @@ const charactersSlice = createSlice({
     description: [],
   } as { characterInfo: { [key: string]: string }; description: string[] },
   reducers: {
-    getCharacterInfo(state, action: PayloadAction<string>) {
+    getCharacterInfo(state, action: PayloadAction<string | null>) {
       state.characterInfo = {};
       state.description = [];
-      const arrayWithInfo = action.payload.split('\n');
+      const arrayWithInfo = action.payload?.split('\n');
 
-      arrayWithInfo.forEach((elem) => {
+      arrayWithInfo?.forEach((elem) => {
         const separator = ': ';
         const separatorIndex = elem.indexOf(separator);
         const property = elem.slice(0, separatorIndex);

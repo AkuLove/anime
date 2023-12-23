@@ -5,20 +5,25 @@ import styles from './page.module.scss';
 import {
   useGetSingleAnimeQuery,
   useGetAnimeRelationsQuery,
+  useGetAnimeCharactersQuery,
 } from '@/services/animeApi';
 import NotFoundImage from '../../../../public/not-found-image.jpeg';
 import DescriptionBlock from '@/components/DescriptionBlock/DescriptionBlock';
 import RelationsBlock from '@/components/RelationsBlock/RelationsBlock';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { setLoadingAnime } from '@/store/AnimeSlice';
+import CharactersBlock from '@/components/CharactersBlock/CharactersBlock';
 
 export default function SingleAnime({ params }: { params: { id: string } }) {
   const { data: singleAnimeData, isLoading: isSingleAnimeLoading } =
     useGetSingleAnimeQuery({ id: params.id });
   const { data: animeRelations, isLoading: isAnimeRelationsLoading } =
     useGetAnimeRelationsQuery(params.id);
+  const { data: animeCharacters, isLoading: isAnimeCharactersLoading } =
+    useGetAnimeCharactersQuery(params.id);
 
   const relations = animeRelations?.data;
+  const characters = animeCharacters?.data;
   const anime = singleAnimeData?.data;
   const imageWebp = anime?.images.webp.large_image_url;
   const imageJpg = anime?.images.jpg.large_image_url;
@@ -50,6 +55,11 @@ export default function SingleAnime({ params }: { params: { id: string } }) {
               isLoading={isAnimeRelationsLoading}
               relations={relations}
             />
+            <CharactersBlock
+              characters={characters}
+              isLoading={isAnimeCharactersLoading}
+            />
+            <div />
           </div>
         )}
       </div>

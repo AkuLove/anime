@@ -51,6 +51,7 @@ export interface ISingleAnime {
   authors: IItem[];
   genres: IItem[];
   themes: IItem[];
+  demographics: IItem[];
 }
 
 export interface ITrailer {

@@ -19,7 +19,9 @@ export default function CharacterInfo({
       <div className={styles.item__body}>
         <p className={styles.name}>
           {item.name}
-          <span className={styles.name__jap}> ({item.name_kanji})</span>
+          {item.name_kanji && (
+            <span className={styles.name__jap}> ({item.name_kanji})</span>
+          )}
         </p>
         <Image
           src={imageWebp || imageJpg || '/not-found-image.jpeg'}

@@ -15,7 +15,7 @@ export default function RelationsItem({
   relation: ISingleAnimeRelation;
   item: IItem;
 }) {
-  const { data, isLoading, isFetching } = useGetSingleAnimeQuery({
+  const { data, isLoading } = useGetSingleAnimeQuery({
     id: item.mal_id.toString(),
     type: item.type,
   });
@@ -36,8 +36,8 @@ export default function RelationsItem({
         {item.name}
       </Link>
       <div className={styles.relationItem__body}>
-        {isLoading && isFetching && <div>Loading...</div>}
-        {!isLoading && !isFetching && (
+        {isLoading && <div>Loading...</div>}
+        {!isLoading && (
           <Link
             href={
               item.type === 'anime'

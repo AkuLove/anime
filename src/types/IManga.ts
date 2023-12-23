@@ -44,6 +44,7 @@ export interface ISingleManga {
   serializations: IItem[];
   genres: IItem[];
   themes: IItem[];
+  demographics: IItem[];
 }
 
 export interface IMangaDescriptions {

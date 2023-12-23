@@ -5,17 +5,22 @@ import styles from './page.module.scss';
 import NotFoundImage from '../../../../public/not-found-image.jpeg';
 import DescriptionBlock from '@/components/DescriptionBlock/DescriptionBlock';
 import {
+  useGetMangaCharactersQuery,
   useGetMangaRelationsQuery,
   useGetSingleMangaQuery,
 } from '@/services/mangaApi';
 import RelationsBlock from '@/components/RelationsBlock/RelationsBlock';
+import CharactersBlock from '@/components/CharactersBlock/CharactersBlock';
 
 export default function SingleManga({ params }: { params: { id: string } }) {
   const { data: singleMangaData, isLoading: isSingleMangaLoading } =
     useGetSingleMangaQuery({ id: params.id });
   const { data: mangaRelations, isLoading: isMangaRelationsLoading } =
     useGetMangaRelationsQuery(params.id);
+  const { data: mangaCharacters, isLoading: isMangaCharactersLoading } =
+    useGetMangaCharactersQuery(params.id);
 
+  const characters = mangaCharacters?.data;
   const relations = mangaRelations?.data;
   const manga = singleMangaData?.data;
   const imageWebp = manga?.images.webp.large_image_url;
@@ -45,6 +50,10 @@ export default function SingleManga({ params }: { params: { id: string } }) {
             <RelationsBlock
               isLoading={isMangaRelationsLoading}
               relations={relations}
+            />
+            <CharactersBlock
+              characters={characters}
+              isLoading={isMangaCharactersLoading}
             />
           </div>
         )}

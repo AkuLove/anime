@@ -19,6 +19,16 @@ const animeSlice = createSlice({
   reducers: {
     checkValidAnimeDescription(state, action: PayloadAction<ISingleAnime>) {
       const anime = action.payload;
+      state.descriptions = {
+        type: null,
+        episodes: null,
+        genres: [],
+        status: null,
+        aired: null,
+        duration: null,
+        rating: null,
+        studios: [],
+      };
 
       if (anime.type) {
         state.descriptions.type = anime.type;

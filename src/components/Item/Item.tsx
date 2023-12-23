@@ -40,6 +40,9 @@ export default function Item({
           {Object.values(item.themes).map((theme) => (
             <span key={theme.name}>{theme.name}</span>
           ))}
+          {Object.values(item.demographics).map((demograph) => (
+            <span key={demograph.name}>{demograph.name}</span>
+          ))}
         </div>
         <p className={styles.description}>
           {item.synopsis

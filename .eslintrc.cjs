@@ -34,5 +34,6 @@ module.exports = {
     'consistent-return': 'off',
     'react-refresh/only-export-components': 'off',
     'import/extensions': 'off',
+    'react/require-default-props': 'off',
   },
 };

@@ -17,6 +17,15 @@ const mangaSlice = createSlice({
   reducers: {
     checkValidMangaDescription(state, action: PayloadAction<ISingleManga>) {
       const anime = action.payload;
+      state.descriptions = {
+        type: null,
+        chapters: null,
+        volumes: null,
+        genres: [],
+        status: null,
+        published: null,
+        authors: [],
+      };
 
       if (anime.type) {
         state.descriptions.type = anime.type;

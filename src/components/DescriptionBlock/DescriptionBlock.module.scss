@@ -1,5 +1,9 @@
 .descriptionBlock {
   width: 100%;
+
+  div:empty {
+    display: none;
+  }
 }
 
 .titles {

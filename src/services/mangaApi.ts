@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ISingleMangaResponse } from '@/types/IManga';
 import { IAnimeRelations } from '@/types/IAnimeRelations';
+import { ICharactersByIdResponse } from '@/types/ICharactersById';
 
 export const mangaApi = createApi({
   reducerPath: 'mangaApi',
@@ -16,7 +17,14 @@ export const mangaApi = createApi({
     getMangaRelations: build.query<IAnimeRelations, string>({
       query: (id) => `/manga/${id}/relations`,
     }),
+    getMangaCharacters: build.query<ICharactersByIdResponse, string>({
+      query: (id) => `/manga/${id}/characters`,
+    }),
   }),
 });
 
-export const { useGetSingleMangaQuery, useGetMangaRelationsQuery } = mangaApi;
+export const {
+  useGetSingleMangaQuery,
+  useGetMangaRelationsQuery,
+  useGetMangaCharactersQuery,
+} = mangaApi;

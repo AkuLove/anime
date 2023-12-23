@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ISingleAnimeResponse } from '@/types/IAnime';
 import { IAnimeRelations } from '@/types/IAnimeRelations';
+import { ICharactersByIdResponse } from '@/types/ICharactersById';
 
 export const animeApi = createApi({
   reducerPath: 'animeApi',
@@ -16,6 +17,9 @@ export const animeApi = createApi({
     getAnimeRelations: build.query<IAnimeRelations, string>({
       query: (id) => `/anime/${id}/relations`,
     }),
+    getAnimeCharacters: build.query<ICharactersByIdResponse, string>({
+      query: (id) => `/anime/${id}/characters`,
+    }),
     getRandomAnime: build.mutation<ISingleAnimeResponse, void>({
       query: () => ({
         url: '/random/anime',
@@ -28,5 +32,6 @@ export const animeApi = createApi({
 export const {
   useGetSingleAnimeQuery,
   useGetAnimeRelationsQuery,
+  useGetAnimeCharactersQuery,
   useGetRandomAnimeMutation,
 } = animeApi;
