@@ -32,8 +32,17 @@ export const charactersApi = createApi({
     >({
       query: ({ id, type = 'characters' }) => `/${type}/${id}/full`,
     }),
+    getCharacterSearch: build.mutation<ICharacterResponse, string>({
+      query: (searchValue) => ({
+        url: `/characters?q=${searchValue}&limit=3`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useGetSingleCharacterQuery, useGetCharactersListQuery } =
-  charactersApi;
+export const {
+  useGetSingleCharacterQuery,
+  useGetCharactersListQuery,
+  useGetCharacterSearchMutation,
+} = charactersApi;

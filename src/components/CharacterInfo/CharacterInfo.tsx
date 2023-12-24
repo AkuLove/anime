@@ -39,16 +39,18 @@ export default function CharacterInfo({
         <div>
           {propertys.map((property, i) => (
             <div key={property} className={styles.info}>
-              <div className={styles.info__body}>
-                <p className={styles.info__title}>{property}</p>
-                <div className={styles.info__list}>
-                  {values[i].split(';').map((value) => (
-                    <p key={value} className={styles.info__specs}>
-                      {value}
-                    </p>
-                  ))}
+              {!property.includes('Source') && (
+                <div className={styles.info__body}>
+                  <p className={styles.info__title}>{property}</p>
+                  <div className={styles.info__list}>
+                    {values[i].split(';').map((value) => (
+                      <p key={value} className={styles.info__specs}>
+                        {value}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </div>

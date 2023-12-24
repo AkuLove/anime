@@ -23,7 +23,7 @@ export default function RelationsBlock({
                     (item) =>
                       item.name && (
                         <RelationsItem
-                          key={item.name}
+                          key={item.mal_id}
                           item={item}
                           relation={relation}
                         />

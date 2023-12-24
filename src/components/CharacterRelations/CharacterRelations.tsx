@@ -11,12 +11,15 @@ export default function CharacterRelations({
   list: Anime[] | Manga[];
 }) {
   const isAnime = (checkedlist: Anime[] | Manga[]): checkedlist is Anime[] => {
-    return 'anime' in list[0];
+    if (list.length !== 0 && 'anime' in list[0]) {
+      return true;
+    }
+    return false;
   };
 
   return (
     <div className={styles.relation}>
-      <p className={styles.relation__type}>{type}:</p>
+      {!!list.length && <p className={styles.relation__type}>{type}:</p>}
       <ul className={styles.relation__list}>
         {isAnime(list)
           ? list.map((item) => (

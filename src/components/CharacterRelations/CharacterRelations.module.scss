@@ -44,6 +44,13 @@
   &__body {
     display: flex;
     column-gap: rem(8);
+
+    img {
+      min-width: rem(80);
+      width: rem(80);
+      height: rem(120);
+      min-height: rem(120);
+    }
   }
 
   &__role {

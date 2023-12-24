@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ISingleAnimeResponse } from '@/types/IAnime';
+import { IAnimeResponse, ISingleAnimeResponse } from '@/types/IAnime';
 import { IAnimeRelations } from '@/types/IAnimeRelations';
 import { ICharactersByIdResponse } from '@/types/ICharactersById';
 
@@ -26,6 +26,12 @@ export const animeApi = createApi({
         method: 'GET',
       }),
     }),
+    getAnimeSearch: build.mutation<IAnimeResponse, string>({
+      query: (searchValue) => ({
+        url: `/anime?q=${searchValue}&limit=3`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
@@ -34,4 +40,5 @@ export const {
   useGetAnimeRelationsQuery,
   useGetAnimeCharactersQuery,
   useGetRandomAnimeMutation,
+  useGetAnimeSearchMutation,
 } = animeApi;

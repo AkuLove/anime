@@ -50,9 +50,9 @@ export default function DescriptionBlock({
               <p className={styles.description__value}>{description}</p>
             </div>
           ) : (
-            <div>
+            <div key={key[index]}>
               {description && (
-                <div key={key[index]} className={styles.description}>
+                <div className={styles.description}>
                   <p className={styles.description__title}>{key[index]}</p>
                   <p className={styles.description__value}>
                     {description.map((arrayDescription) => (

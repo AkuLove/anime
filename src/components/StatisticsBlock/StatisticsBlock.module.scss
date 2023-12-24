@@ -4,7 +4,7 @@
   @include adaptiveValue('left', 0, -32, 0);
   z-index: 2;
   background-color: #fff;
-  box-shadow: 4px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 10px 15px -3px rgba(0, 0, 0, 0.3);
   border-radius: rem(8);
   width: 100%;
   @include adaptiveValue('min-width', 500, 320, 0);
