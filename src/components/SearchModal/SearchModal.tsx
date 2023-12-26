@@ -116,7 +116,11 @@ export default function SearchModal({
   };
 
   return (
-    <div className={focus ? styles.searchModal : styles.hideModal}>
+    <div
+      className={
+        focus ? styles.searchModal : `${styles.searchModal} ${styles.hideModal}`
+      }
+    >
       <div className={styles.searchModal__body}>
         {checkList(animeList)}
         {checkList(mangaList)}

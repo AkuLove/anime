@@ -1,16 +1,3 @@
-.hideModal {
-  background-color: #fff;
-  padding: rem(8) rem(16);
-  position: absolute;
-  box-shadow: 4px 10px 15px -3px rgba(0, 0, 0, 0.3);
-  border-radius: rem(8);
-  top: rem(36);
-  left: 0;
-  z-index: 2;
-  opacity: 0;
-  transition: opacity ease 0.3s;
-}
-
 .searchModal {
   background-color: #fff;
   padding: rem(8) rem(16);
@@ -21,12 +8,23 @@
   left: 0;
   z-index: 2;
   opacity: 1;
+  visibility: visible;
   transition: opacity ease 0.3s;
+
+  &.hideModal {
+    visibility: hidden;
+    opacity: 0;
+    transition-property: top, visibility;
+    transition-duration: 0.1s, 0.3s;
+    transition-timing-function: ease, ease;
+    transition-delay: 0.3s, 0s;
+  }
 
   &__list {
     display: flex;
     flex-direction: column;
     row-gap: rem(8);
+
     &:not(:last-child) {
       margin-bottom: rem(8);
     }

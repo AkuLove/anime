@@ -5,6 +5,13 @@ export interface IItem {
   url: string;
 }
 
+export interface IFilterItem {
+  mal_id: number;
+  count: number;
+  name: string;
+  url: string;
+}
+
 export interface Pagination {
   last_visible_page: number;
   has_next_page: boolean;
