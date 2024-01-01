@@ -10,11 +10,13 @@
     align-items: center;
     justify-content: space-between;
     user-select: none;
+    cursor: pointer;
   }
 
   &__menu {
     position: absolute;
     transform: translateY(rem(4));
+    z-index: 2;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: rem(4);
@@ -38,21 +40,39 @@
     }
   }
 
+  &__selected_value {
+    overflow: hidden;
+  }
+
   &__tags {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    white-space: nowrap;
     gap: rem(4);
   }
 
   &__tag_item {
-    background-color: #ddd;
+    background-color: $lightBlueColor;
     padding: rem(2) rem(4);
     border-radius: rem(2);
     display: flex;
+    white-space: nowrap;
     align-items: center;
   }
 
+  &__tool {
+    min-width: rem(20);
+    display: flex;
+    transition: transform ease 0.3s;
+
+    &.rotate {
+      transform: rotate(180deg);
+      transition: transform ease 0.3s;
+    }
+  }
+
   &__tag_close {
+    min-width: rem(20);
     display: flex;
     align-items: center;
   }

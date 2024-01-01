@@ -6,10 +6,10 @@ export interface IItem {
 }
 
 export interface IFilterItem {
-  mal_id: number;
-  count: number;
+  mal_id: number | string;
+  count?: number;
   name: string;
-  url: string;
+  url?: string;
 }
 
 export interface Pagination {

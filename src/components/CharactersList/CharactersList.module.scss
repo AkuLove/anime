@@ -14,7 +14,8 @@
     grid-template-columns: repeat(3, rem(150));
   }
 
-  @media (max-width: em(540)) {
-    grid-template-columns: repeat(2, 1fr);
+  @media (max-width: em(570)) {
+    justify-content: space-evenly;
+    grid-template-columns: repeat(2, rem(116));
   }
 }

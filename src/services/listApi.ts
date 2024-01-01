@@ -11,7 +11,9 @@ export const listApi = createApi({
   endpoints: (build) => ({
     getList: build.query<IAnimeResponse | IMangaResponse, string>({
       query: (type, limit = '10') =>
-        `/top/${type}?${limit && `limit=${limit}`}`,
+        `/top/${type}?${limit && `limit=${limit}`}&${
+          type === 'anime' ? 'filter=airing' : 'filter=publishing'
+        }`,
       providesTags: (result) =>
         result?.data
           ? [
@@ -29,7 +31,20 @@ export const listApi = createApi({
     >({
       query: ({ type, id }) => `/${type}/${id}/statistics`,
     }),
+    getFilteredList: build.mutation<
+      IAnimeResponse | IMangaResponse,
+      { type: 'anime' | 'manga'; filterValue: string }
+    >({
+      query: ({ type, filterValue }) => ({
+        url: `/${type}?${filterValue}&order_by=popularity&limit=10`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useGetListQuery, useGetStatisticsQuery } = listApi;
+export const {
+  useGetListQuery,
+  useGetStatisticsQuery,
+  useGetFilteredListMutation,
+} = listApi;

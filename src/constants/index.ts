@@ -53,3 +53,71 @@ export const filterOptions: IFilterItem[] = [
     count: 5567,
   },
 ];
+
+export const ratingOptions: IFilterItem[] = [
+  {
+    mal_id: 'g',
+    name: 'G',
+  },
+  {
+    mal_id: 'pg',
+    name: 'PG',
+  },
+  {
+    mal_id: 'pg13',
+    name: 'PG-13',
+  },
+  {
+    mal_id: 'r17',
+    name: 'R-17',
+  },
+  {
+    mal_id: 'r',
+    name: 'R',
+  },
+  {
+    mal_id: 'rx',
+    name: 'Rx',
+  },
+];
+export const statusOptions: IFilterItem[] = [
+  {
+    mal_id: 'airing',
+    name: 'Airing',
+  },
+  {
+    mal_id: 'complete',
+    name: 'Complete',
+  },
+  {
+    mal_id: 'upcoming',
+    name: 'Upcoming',
+  },
+];
+
+export const typeOptions: IFilterItem[] = [
+  {
+    mal_id: 'tv',
+    name: 'TV',
+  },
+  {
+    mal_id: 'movie',
+    name: 'Movie',
+  },
+  {
+    mal_id: 'ova',
+    name: 'OVA',
+  },
+  {
+    mal_id: 'ona',
+    name: 'ONA',
+  },
+  {
+    mal_id: 'special',
+    name: 'Special',
+  },
+  {
+    mal_id: 'music',
+    name: 'Music',
+  },
+];

@@ -16,10 +16,12 @@ export default function Item({
 
   return (
     <li className={styles.item}>
-      <div className={styles.rating}>
-        <Image src="/ratingStar.svg" width={30} height={30} alt="rating" />
-        {Math.round(item.score * 10) / 10}
-      </div>
+      {item.score > 0 && (
+        <div className={styles.rating}>
+          <Image src="/ratingStar.svg" width={30} height={30} alt="rating" />
+          {Math.round(item.score * 10) / 10}
+        </div>
+      )}
       <Link href={`/${type}/${item.mal_id}`} className={styles.image}>
         <Image
           src={imageWebp || imageJpg || '/not-found-image.jpeg'}
@@ -45,9 +47,10 @@ export default function Item({
           ))}
         </div>
         <p className={styles.description}>
-          {item.synopsis
-            .replace('[Written by MAL Rewrite]', '')
-            .replace('(Source: Funimation)', '')}
+          {item.synopsis &&
+            item.synopsis
+              .replace('[Written by MAL Rewrite]', '')
+              .replace('(Source: Funimation)', '')}
         </p>
       </div>
     </li>

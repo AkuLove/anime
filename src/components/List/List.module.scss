@@ -1,0 +1,16 @@
+.list {
+  position: relative;
+  &.loading::before {
+    content: 'aaaaaaaaaaaaaaaaaaaaaaaaaa';
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.noResults {
+  background-color: #fff;
+  padding: rem(16);
+}

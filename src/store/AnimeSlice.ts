@@ -43,6 +43,18 @@ const animeSlice = createSlice({
             id: genre.mal_id,
           });
         });
+        anime.themes.forEach((theme) => {
+          state.descriptions.genres?.push({
+            name: theme.name,
+            id: theme.mal_id,
+          });
+        });
+        anime.demographics.forEach((demographic) => {
+          state.descriptions.genres?.push({
+            name: demographic.name,
+            id: demographic.mal_id,
+          });
+        });
       }
       if (anime.status) {
         state.descriptions.status = anime.status;
