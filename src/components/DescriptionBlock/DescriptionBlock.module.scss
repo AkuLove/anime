@@ -36,6 +36,7 @@
   &__value {
     flex: 1 1 70%;
     display: flex;
+    flex-wrap: wrap;
     column-gap: rem(8);
 
     &::first-letter {

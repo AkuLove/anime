@@ -9,22 +9,6 @@ export const listApi = createApi({
   tagTypes: ['List'],
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.jikan.moe/v4/' }),
   endpoints: (build) => ({
-    getList: build.query<IAnimeResponse | IMangaResponse, string>({
-      query: (type, limit = '10') =>
-        `/top/${type}?${limit && `limit=${limit}`}&${
-          type === 'anime' ? 'filter=airing' : 'filter=publishing'
-        }`,
-      providesTags: (result) =>
-        result?.data
-          ? [
-              ...result.data.map(({ mal_id }) => ({
-                type: 'List' as const,
-                mal_id,
-              })),
-              { type: 'List', id: 'LIST' },
-            ]
-          : [{ type: 'List', id: 'LIST' }],
-    }),
     getStatistics: build.query<
       IAnimeStatisticsResponse | IMangaStatisticsResponse,
       { type: 'anime' | 'manga'; id: string }
@@ -33,18 +17,14 @@ export const listApi = createApi({
     }),
     getFilteredList: build.mutation<
       IAnimeResponse | IMangaResponse,
-      { type: 'anime' | 'manga'; filterValue: string }
+      { type: 'anime' | 'manga'; filterValue?: string; page: number }
     >({
-      query: ({ type, filterValue }) => ({
-        url: `/${type}?${filterValue}&order_by=popularity&limit=10`,
+      query: ({ type, filterValue, page }) => ({
+        url: `/${type}?order_by=popularity&limit=15&${filterValue}page=${page}`,
         method: 'GET',
       }),
     }),
   }),
 });
 
-export const {
-  useGetListQuery,
-  useGetStatisticsQuery,
-  useGetFilteredListMutation,
-} = listApi;
+export const { useGetStatisticsQuery, useGetFilteredListMutation } = listApi;

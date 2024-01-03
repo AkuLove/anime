@@ -37,13 +37,28 @@ export default function Item({
         <p className={styles.title__jap}>{item.title_japanese}</p>
         <div className={styles.genres}>
           {Object.values(item.genres).map((genre) => (
-            <span key={genre.mal_id}>{genre.name}</span>
+            <Link
+              key={genre.mal_id}
+              href={`/${type}/filter/genres-is-${genre.mal_id}`}
+            >
+              <span>{genre.name}</span>
+            </Link>
           ))}
           {Object.values(item.themes).map((theme) => (
-            <span key={theme.name}>{theme.name}</span>
+            <Link
+              key={theme.mal_id}
+              href={`/${type}/filter/genres-is-${theme.mal_id}`}
+            >
+              <span>{theme.name}</span>
+            </Link>
           ))}
           {Object.values(item.demographics).map((demograph) => (
-            <span key={demograph.name}>{demograph.name}</span>
+            <Link
+              key={demograph.mal_id}
+              href={`/${type}/filter/genres-is-${demograph.mal_id}`}
+            >
+              <span>{demograph.name}</span>
+            </Link>
           ))}
         </div>
         <p className={styles.description}>

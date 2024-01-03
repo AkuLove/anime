@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import DefaultButton from '../UI/DefaultButton/DefaultButton';
 import DefaultInput from '../UI/DefaultInput/DefaultInput';
 import styles from './Header.module.scss';
 import { headerLinks, headerPages } from '@/constants';
@@ -109,9 +108,6 @@ export default function Header() {
                 focus={focus}
               />
             )}
-          </div>
-          <div className={styles.logIn}>
-            <DefaultButton className="">Log In</DefaultButton>
           </div>
         </div>
       </div>

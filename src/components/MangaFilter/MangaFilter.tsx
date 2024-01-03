@@ -3,16 +3,15 @@
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import {
-  animeFilterOptions,
-  animeRatingOptions,
-  animeStatusOptions,
-  animeTypeOptions,
+  mangaFilterOptions,
+  mangaStatusOptions,
+  mangaTypeOptions,
 } from '@/constants';
-import styles from './AnimeFilter.module.scss';
+import styles from './MangaFilter.module.scss';
 import MultiDropdown from '../UI/MultiDropdownSelect/MultiDropdownSelect';
 import SingleDropdown from '../UI/SingleDropdownSelect/SingleDropdownSelect';
 
-export default function AnimeFilter() {
+export default function MangaFilter() {
   const params = useParams();
   return (
     <div className={!params.id ? styles.filter : styles.filter__hidden}>
@@ -25,7 +24,7 @@ export default function AnimeFilter() {
           <p className={styles.dropdown__title}>Genres</p>
           <MultiDropdown
             placeHolder="Select genre"
-            options={animeFilterOptions}
+            options={mangaFilterOptions}
             queryParam="genres"
           />
         </div>
@@ -33,7 +32,7 @@ export default function AnimeFilter() {
           <p className={styles.dropdown__title}>Type</p>
           <SingleDropdown
             placeHolder="Select type"
-            options={animeTypeOptions}
+            options={mangaTypeOptions}
             queryParam="type"
           />
         </div>
@@ -41,16 +40,8 @@ export default function AnimeFilter() {
           <p className={styles.dropdown__title}>Status</p>
           <SingleDropdown
             placeHolder="Select status"
-            options={animeStatusOptions}
+            options={mangaStatusOptions}
             queryParam="status"
-          />
-        </div>
-        <div className={styles.dropdown}>
-          <p className={styles.dropdown__title}>Age limit</p>
-          <SingleDropdown
-            placeHolder="Select rating"
-            options={animeRatingOptions}
-            queryParam="rating"
           />
         </div>
       </div>

@@ -1,12 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useParams, usePathname } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import styles from './List.module.scss';
-import {
-  useGetFilteredListMutation,
-  useGetListQuery,
-} from '@/services/listApi';
+import { useGetFilteredListMutation } from '@/services/listApi';
 import Item from '../Item/Item';
 import { ISingleManga } from '@/types/IManga';
 import { ISingleAnime } from '@/types/IAnime';
@@ -21,49 +17,68 @@ export default function List({
   const [list, setList] = useState<ISingleAnime[] | ISingleManga[] | null>(
     null
   );
-  const params = useParams();
-  const pathName = usePathname();
-  const { data, isLoading } = useGetListQuery(type);
-  const [filterData, { isLoading: isFilterDataLoading }] =
-    useGetFilteredListMutation();
+  const [page, setPage] = useState(1);
+  const [lastVisiblePage, setLastVisiblePage] = useState(1);
+  const [filterData, { isLoading }] = useGetFilteredListMutation();
+  const [fetching, setFetching] = useState(true);
 
-  const checkFilters = () => {
-    if (query) {
-      filterData({ type, filterValue: query })
-        .unwrap()
-        .then((response) => {
-          setList(response.data);
-        });
-    } else if (data?.data) {
-      setList(data?.data);
+  const scrollHandler = () => {
+    const { scrollHeight } = document.documentElement;
+    const { scrollTop } = document.documentElement;
+    const { innerHeight } = window;
+    if (
+      scrollHeight - (scrollTop + innerHeight) < 100 &&
+      page <= lastVisiblePage
+    ) {
+      setFetching(true);
     }
   };
 
-  useEffect(() => {
-    if (
-      (data?.data && list && list.length === 0) ||
-      pathName === '/anime' ||
-      pathName === '/manga'
-    ) {
-      if (data) {
-        setList(data.data);
-      }
-    }
-  }, [isLoading]);
+  const checkType = (
+    Itemslist: ISingleAnime[] | ISingleManga[]
+  ): Itemslist is ISingleAnime[] => {
+    return type === 'anime';
+  };
 
   useEffect(() => {
-    checkFilters();
-  }, [params]);
+    document.addEventListener('scroll', scrollHandler);
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, []);
+
+  const checkFilters = () => {
+    const altQuery = 'sfw=true&';
+    filterData({ type, filterValue: `${query ? `${query}&` : altQuery}`, page })
+      .unwrap()
+      .then((response) => {
+        if (list && checkType(response.data) && checkType(list)) {
+          setList([...list, ...response.data]);
+        } else {
+          setList(response.data);
+        }
+        setLastVisiblePage(response.pagination.last_visible_page);
+        setPage((prev) => prev + 1);
+      })
+      .finally(() => setFetching(false));
+  };
+
+  useEffect(() => {
+    if (fetching) {
+      checkFilters();
+    }
+  }, [fetching]);
 
   return (
     <ul className={styles.list}>
-      {isFilterDataLoading && !list && <div>Loading...</div>}
+      {isLoading && !list && <div>Loading...</div>}
       {list &&
         list.length !== 0 &&
         list.map((item) => <Item key={item.title} item={item} type={type} />)}
       {list && list.length === 0 && (
         <p className={styles.noResults}>No results</p>
       )}
+      {fetching && list && <div>Loading...</div>}
     </ul>
   );
 }

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IMangaDescriptions, ISingleManga } from '@/types/IManga';
 
 const mangaSlice = createSlice({
-  name: 'anime',
+  name: 'manga',
   initialState: {
     descriptions: {
       type: null,
@@ -16,7 +16,7 @@ const mangaSlice = createSlice({
   },
   reducers: {
     checkValidMangaDescription(state, action: PayloadAction<ISingleManga>) {
-      const anime = action.payload;
+      const manga = action.payload;
       state.descriptions = {
         type: null,
         chapters: null,
@@ -27,33 +27,45 @@ const mangaSlice = createSlice({
         authors: [],
       };
 
-      if (anime.type) {
-        state.descriptions.type = anime.type;
+      if (manga.type) {
+        state.descriptions.type = manga.type;
       }
-      if (anime.chapters) {
-        state.descriptions.chapters = anime.chapters;
+      if (manga.chapters) {
+        state.descriptions.chapters = manga.chapters;
       }
-      if (anime.volumes) {
-        state.descriptions.volumes = anime.volumes;
+      if (manga.volumes) {
+        state.descriptions.volumes = manga.volumes;
       }
-      if (anime.genres) {
+      if (manga.genres) {
         state.descriptions.genres = [];
-        anime.genres.forEach((genre) => {
+        manga.genres.forEach((genre) => {
           state.descriptions.genres?.push({
             name: genre.name,
             id: genre.mal_id,
           });
         });
+        manga.themes.forEach((theme) => {
+          state.descriptions.genres?.push({
+            name: theme.name,
+            id: theme.mal_id,
+          });
+        });
+        manga.demographics.forEach((demographic) => {
+          state.descriptions.genres?.push({
+            name: demographic.name,
+            id: demographic.mal_id,
+          });
+        });
       }
-      if (anime.status) {
-        state.descriptions.status = anime.status;
+      if (manga.status) {
+        state.descriptions.status = manga.status;
       }
-      if (anime.published) {
-        state.descriptions.published = anime.published.string;
+      if (manga.published) {
+        state.descriptions.published = manga.published.string;
       }
-      if (anime.authors) {
+      if (manga.authors) {
         state.descriptions.authors = [];
-        anime.authors.forEach((author) => {
+        manga.authors.forEach((author) => {
           state.descriptions.authors?.push({
             name: author.name,
             id: author.mal_id,
