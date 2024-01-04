@@ -1,0 +1,12 @@
+.sortBlock {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    column-gap: rem(8);
+    padding: rem(12) rem(16);
+    border-bottom: 1px solid $lightBlueColor;
+}
+    .dropdown {
+        width: 100%;
+        max-width: rem(140);
+    }
