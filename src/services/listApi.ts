@@ -24,7 +24,24 @@ export const listApi = createApi({
         method: 'GET',
       }),
     }),
+    getSeasonList: build.query<IAnimeResponse, string>({
+      query: (season) => `/seasons/${season}`,
+      providesTags: (result) =>
+        result?.data
+          ? [
+              ...result.data.map(({ mal_id }) => ({
+                type: 'List' as const,
+                mal_id,
+              })),
+              { type: 'List', id: 'LIST' },
+            ]
+          : [{ type: 'List', id: 'LIST' }],
+    }),
   }),
 });
 
-export const { useGetStatisticsQuery, useGetFilteredListMutation } = listApi;
+export const {
+  useGetStatisticsQuery,
+  useGetFilteredListMutation,
+  useGetSeasonListQuery,
+} = listApi;

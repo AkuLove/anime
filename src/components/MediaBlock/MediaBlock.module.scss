@@ -5,8 +5,9 @@
 }
 
 .image {
-  max-width: rem(250);
-  max-height: rem(370);
+  min-width: rem(250);
+  min-height: rem(370);
+  object-fit: cover;
 }
 
 .buttons__block {

@@ -18,7 +18,7 @@ export default function DescriptionBlock({
   item: ISingleAnime | ISingleManga;
   type: 'anime' | 'manga';
 }) {
-  const titleEng = item.title_english;
+  const titleEng = item.title;
   const titleJap = item.title_japanese;
   const dispatch = useAppDispatch();
   const animeDescriptions = useAppSelector((state) => state.anime.descriptions);
@@ -80,7 +80,9 @@ export default function DescriptionBlock({
         />
       )}
       <div className={styles.titles}>
-        <h1 className={styles.main__title}>{item.title}</h1>
+        <h1 className={styles.main__title}>
+          {item.title_english || item.title}
+        </h1>
         {titleEng && <h2 className={styles.second__title}>{titleEng}</h2>}
         {titleJap && <h3 className={styles.second__title}>{titleJap}</h3>}
       </div>

@@ -1,0 +1,79 @@
+.seasons {
+  display: grid;
+
+  &__list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, rem(162));
+    justify-content: space-between;
+    gap: rem(20);
+    height: rem(312);
+    overflow: hidden;
+    transition: ease 1s;
+
+    &.active {
+      height: 100%;
+    }
+  }
+
+  &__anime {
+    position: relative;
+  }
+
+  &__logo {
+    min-width: rem(162);
+    min-height: rem(226);
+    height: rem(226);
+    width: rem(162);
+    object-fit: cover;
+  }
+
+  &__title {
+    color: $deepBlueColor;
+    font-weight: 700;
+    font-size: rem(20);
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    white-space: pre-line;
+  }
+
+  &__showMore {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    color: #fff;
+    padding: rem(2) 0;
+    text-shadow: 2px 2px 5px $deepBlueColor;
+    font-weight: 700;
+    font-size: rem(18);
+    box-shadow: 0px rem(-15) rem(10) rem(5) rgba(17, 45, 78, 0.4);
+    background-color: rgba($color: $deepBlueColor, $alpha: 0.4);
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all ease 0.4s;
+
+    &:hover {
+      box-shadow: 0px rem(-15) rem(10) rem(5) rgba(17, 45, 78, 0.6);
+      background-color: rgba($color: $deepBlueColor, $alpha: 0.6);
+      transition: all ease 0.4s;
+    }
+  }
+}
+
+.rating {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background-color: $deepBlueColor;
+  color: #fff;
+  padding: rem(4);
+  padding-right: rem(12);
+  border-radius: rem(4);
+  top: rem(24);
+  left: rem(0);
+  justify-content: center;
+}

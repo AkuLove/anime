@@ -32,7 +32,7 @@ export default function Item({
       </Link>
       <div className={styles.body}>
         <Link href={`/${type}/${item.mal_id}`} className={styles.title}>
-          {item.title}
+          {item.title_english || item.title}
         </Link>
         <p className={styles.title__jap}>{item.title_japanese}</p>
         <div className={styles.genres}>

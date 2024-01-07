@@ -27,38 +27,36 @@ export default function SingleAnime({ params }: { params: { id: string } }) {
   const imageJpg = anime?.images.jpg.large_image_url;
 
   return (
-    <main className={styles.anime}>
-      <div className="container">
-        {isSingleAnimeLoading && <div>Loading...</div>}
-        {anime && (
-          <div className={styles.anime__content}>
-            <div className={styles.anime__body}>
-              <MediaBlock
-                title={anime.title}
-                image={imageWebp || imageJpg || NotFoundImage}
-                id={anime.mal_id}
-                type="anime"
-              />
-              <DescriptionBlock item={anime} type="anime" />
-            </div>
-            <p className={styles.synopsis}>
-              {anime.synopsis &&
-                anime.synopsis
-                  .replace('[Written by MAL Rewrite]', '')
-                  .replace('(Source: Funimation)', '')}
-            </p>
-            <RelationsBlock
-              isLoading={isAnimeRelationsLoading}
-              relations={relations}
+    <div>
+      {isSingleAnimeLoading && <div>Loading...</div>}
+      {anime && (
+        <div className={styles.anime__content}>
+          <div className={styles.anime__body}>
+            <MediaBlock
+              title={anime.title}
+              image={imageWebp || imageJpg || NotFoundImage}
+              id={anime.mal_id}
+              type="anime"
             />
-            <CharactersBlock
-              characters={characters}
-              isLoading={isAnimeCharactersLoading}
-            />
-            <div />
+            <DescriptionBlock item={anime} type="anime" />
           </div>
-        )}
-      </div>
-    </main>
+          <p className={styles.synopsis}>
+            {anime.synopsis &&
+              anime.synopsis
+                .replace('[Written by MAL Rewrite]', '')
+                .replace('(Source: Funimation)', '')}
+          </p>
+          <RelationsBlock
+            isLoading={isAnimeRelationsLoading}
+            relations={relations}
+          />
+          <CharactersBlock
+            characters={characters}
+            isLoading={isAnimeCharactersLoading}
+          />
+          <div />
+        </div>
+      )}
+    </div>
   );
 }

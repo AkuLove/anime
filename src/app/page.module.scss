@@ -1,0 +1,20 @@
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(8);
+  background-color: #fff;
+  padding: rem(16);
+}
+
+.list {
+  &:not(:last-child) {
+    padding-bottom: rem(20);
+    border-bottom: 1px solid $lightBlueColor;
+  }
+}
+
+.title {
+  font-size: rem(26);
+  font-weight: 700;
+  margin-bottom: rem(4);
+}
