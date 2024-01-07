@@ -527,6 +527,28 @@ export const animeTypeOptions: IFilterItem[] = [
     name: 'Music',
   },
 ];
+export const sortOptions: IFilterItem[] = [
+  {
+    mal_id: 'start_date',
+    name: 'Start date'
+  },
+  {
+    mal_id: 'end_date',
+    name: 'End date'
+  },
+  {
+    mal_id: 'popularity',
+    name: 'Popularity'
+  },
+  {
+    mal_id: 'rank',
+    name: 'Rank'
+  },
+  {
+    mal_id: 'title',
+    name: 'Title'
+  }
+]
 
 // =======================================================================================
 
