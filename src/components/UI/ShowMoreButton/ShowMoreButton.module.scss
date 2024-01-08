@@ -1,0 +1,38 @@
+.showMore {
+  transition: visibility 1s ease;
+  &.hidden {
+    pointer-events: none;
+    visibility: hidden;
+    transition: visibility 1s ease;
+  }
+
+  &__button {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    color: #fff;
+    padding: rem(2) 0;
+    text-shadow: 2px 2px 5px $deepBlueColor;
+    font-weight: 700;
+    font-size: rem(18);
+    box-shadow: 0px rem(-15) rem(10) rem(5) rgba(17, 45, 78, 0.4);
+    background-color: rgba($color: $deepBlueColor, $alpha: 0.4);
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    opacity: 1;
+    transform: translateX(-50%);
+    transition: all ease 0.4s;
+
+    &:hover {
+      box-shadow: 0px rem(-15) rem(10) rem(5) rgba(17, 45, 78, 0.6);
+      background-color: rgba($color: $deepBlueColor, $alpha: 0.6);
+      transition: all ease 0.4s;
+    }
+
+    &.hidden {
+      opacity: 0;
+      transition: opacity ease 1s;
+    }
+  }
+}

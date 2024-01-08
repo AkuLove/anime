@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useGetStatisticsQuery } from '@/services/listApi';
 import styles from './StatisticsBlock.module.scss';
+import Loader from '../UI/Loader/Loader';
 
 export default function StatisticsBlock({
   id,
@@ -80,7 +81,7 @@ export default function StatisticsBlock({
           </p>
         </>
       ) : (
-        <div>Loading...</div>
+        <Loader />
       )}
     </div>
   );

@@ -36,7 +36,6 @@ export default function RelationsItem({
         {item.name}
       </Link>
       <div className={styles.relationItem__body}>
-        {isLoading && <div>Loading...</div>}
         {!isLoading && (
           <Link
             href={
@@ -46,9 +45,10 @@ export default function RelationsItem({
             }
           >
             <Image
+              className={styles.logo}
               src={imageWebp || imageJpg || notFoundImage}
               alt={item.name}
-              width={80}
+              width={85}
               height={120}
               priority={false}
             />

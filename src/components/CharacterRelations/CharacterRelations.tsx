@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { Anime, Manga } from '@/types/ICharacters';
 import styles from './CharacterRelations.module.scss';
+import ShowMoreButton from '../UI/ShowMoreButton/ShowMoreButton';
 
 export default function CharacterRelations({
   type,
@@ -16,11 +18,18 @@ export default function CharacterRelations({
     }
     return false;
   };
+  const [active, setActive] = useState(false);
 
   return (
     <div className={styles.relation}>
       {!!list.length && <p className={styles.relation__type}>{type}:</p>}
-      <ul className={styles.relation__list}>
+      <ul
+        className={
+          !active && list && list.length > 3
+            ? styles.relation__list
+            : `${styles.relation__list} ${styles.active}`
+        }
+      >
         {isAnime(list)
           ? list.map((item) => (
               <li key={item.anime.mal_id} className={styles.relation__item}>
@@ -74,6 +83,9 @@ export default function CharacterRelations({
                 </div>
               </li>
             ))}
+        {list && list.length > 3 && (
+          <ShowMoreButton active={active} setActive={setActive} />
+        )}
       </ul>
     </div>
   );

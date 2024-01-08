@@ -2,4 +2,8 @@
   display: grid;
   grid-template-columns: 1fr rem(300);
   column-gap: rem(20);
+
+  &.hidden {
+    grid-template-columns: 1fr;
+  }
 }

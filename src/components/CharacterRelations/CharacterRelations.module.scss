@@ -1,4 +1,5 @@
 .relation {
+  display: grid;
   &:not(:last-child) {
     padding-bottom: rem(20);
     border-bottom: 1px solid $lightBlueColor;
@@ -32,9 +33,17 @@
 
   &__list {
     display: grid;
+    position: relative;
     grid-template-columns: repeat(4, 1fr);
     column-gap: rem(40);
     row-gap: rem(20);
+    height: rem(220);
+    overflow: hidden;
+    transition: ease 1s;
+
+    &.active {
+      height: 100%;
+    }
   }
 
   &__item {
@@ -46,10 +55,9 @@
     column-gap: rem(8);
 
     img {
-      min-width: rem(80);
       width: rem(80);
       height: rem(120);
-      min-height: rem(120);
+      object-fit: cover;
     }
   }
 

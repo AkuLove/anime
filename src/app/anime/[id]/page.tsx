@@ -11,6 +11,7 @@ import NotFoundImage from '../../../../public/not-found-image.jpeg';
 import DescriptionBlock from '@/components/DescriptionBlock/DescriptionBlock';
 import RelationsBlock from '@/components/RelationsBlock/RelationsBlock';
 import CharactersBlock from '@/components/CharactersBlock/CharactersBlock';
+import Loader from '@/components/UI/Loader/Loader';
 
 export default function SingleAnime({ params }: { params: { id: string } }) {
   const { data: singleAnimeData, isLoading: isSingleAnimeLoading } =
@@ -28,7 +29,7 @@ export default function SingleAnime({ params }: { params: { id: string } }) {
 
   return (
     <div>
-      {isSingleAnimeLoading && <div>Loading...</div>}
+      {isSingleAnimeLoading && <Loader />}
       {anime && (
         <div className={styles.anime__content}>
           <div className={styles.anime__body}>

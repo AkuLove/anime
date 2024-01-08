@@ -10,10 +10,22 @@
     margin-bottom: rem(16);
   }
 
+  &__list_body {
+    display: grid;
+  }
+
   &__list {
     display: grid;
+    position: relative;
     grid-template-columns: repeat(5, 1fr);
     column-gap: rem(40);
     row-gap: rem(20);
+    height: rem(220);
+    overflow: hidden;
+    transition: ease 1s;
+
+    &.active {
+      height: 100%;
+    }
   }
 }

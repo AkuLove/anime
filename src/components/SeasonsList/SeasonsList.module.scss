@@ -38,30 +38,6 @@
     -webkit-line-clamp: 1;
     white-space: pre-line;
   }
-
-  &__showMore {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    color: #fff;
-    padding: rem(2) 0;
-    text-shadow: 2px 2px 5px $deepBlueColor;
-    font-weight: 700;
-    font-size: rem(18);
-    box-shadow: 0px rem(-15) rem(10) rem(5) rgba(17, 45, 78, 0.4);
-    background-color: rgba($color: $deepBlueColor, $alpha: 0.4);
-    width: 100%;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: all ease 0.4s;
-
-    &:hover {
-      box-shadow: 0px rem(-15) rem(10) rem(5) rgba(17, 45, 78, 0.6);
-      background-color: rgba($color: $deepBlueColor, $alpha: 0.6);
-      transition: all ease 0.4s;
-    }
-  }
 }
 
 .rating {

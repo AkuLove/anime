@@ -7,6 +7,7 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { getCharacterInfo } from '@/store/CharactersSlice';
 import CharacterInfo from '@/components/CharacterInfo/CharacterInfo';
 import CharacterDescription from '@/components/CharacterDescription/CharacterDescription';
+import Loader from '@/components/UI/Loader/Loader';
 
 export default function SingleCharacter({
   params,
@@ -18,7 +19,6 @@ export default function SingleCharacter({
   });
   const character = data?.data;
   const dispatch = useAppDispatch();
-  // const info = useAppSelector((state) => state.charaters.characterInfo);
 
   useEffect(() => {
     if (character) {
@@ -28,7 +28,7 @@ export default function SingleCharacter({
   return (
     <main className={styles.character}>
       <div className="container">
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <Loader />}
         {character && (
           <div className={styles.character__body}>
             <CharacterDescription character={character} />

@@ -6,6 +6,7 @@ import { useGetFilteredListMutation } from '@/services/listApi';
 import Item from '../Item/Item';
 import { ISingleManga } from '@/types/IManga';
 import { ISingleAnime } from '@/types/IAnime';
+import Loader from '../UI/Loader/Loader';
 
 export default function List({
   type,
@@ -71,14 +72,14 @@ export default function List({
 
   return (
     <ul className={styles.list}>
-      {isLoading && !list && <div>Loading...</div>}
+      {isLoading && !list && <Loader />}
       {list &&
         list.length !== 0 &&
         list.map((item) => <Item key={item.title} item={item} type={type} />)}
       {list && list.length === 0 && (
         <p className={styles.noResults}>No results</p>
       )}
-      {fetching && list && <div>Loading...</div>}
+      {fetching && list && <Loader />}
     </ul>
   );
 }

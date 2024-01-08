@@ -11,6 +11,7 @@ import {
 } from '@/services/mangaApi';
 import RelationsBlock from '@/components/RelationsBlock/RelationsBlock';
 import CharactersBlock from '@/components/CharactersBlock/CharactersBlock';
+import Loader from '@/components/UI/Loader/Loader';
 
 export default function SingleManga({ params }: { params: { id: string } }) {
   const { data: singleMangaData, isLoading: isSingleMangaLoading } =
@@ -29,7 +30,7 @@ export default function SingleManga({ params }: { params: { id: string } }) {
   return (
     <main className={styles.manga}>
       <div className="container">
-        {isSingleMangaLoading && <div>Loading...</div>}
+        {isSingleMangaLoading && <Loader />}
         {manga && (
           <div className={styles.manga__content}>
             <div className={styles.manga__body}>

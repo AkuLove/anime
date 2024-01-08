@@ -5,6 +5,11 @@
     border: 1px solid $deepBlueColor;
     border-bottom: none;
   }
+  img {
+    width: rem(220);
+    height: rem(310);
+    object-fit: cover;
+  }
 }
 
 .name {

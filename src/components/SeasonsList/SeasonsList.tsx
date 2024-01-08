@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import styles from './SeasonsList.module.scss';
 import { useGetSeasonListQuery } from '@/services/listApi';
+import Loader from '../UI/Loader/Loader';
+import ShowMoreButton from '../UI/ShowMoreButton/ShowMoreButton';
 
 export default function SeasonsList({ type }: { type: 'now' | 'upcoming' }) {
   const { data, isLoading } = useGetSeasonListQuery(type);
@@ -13,7 +15,7 @@ export default function SeasonsList({ type }: { type: 'now' | 'upcoming' }) {
 
   return (
     <>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Loader />}
       <div className={styles.seasons}>
         <ul
           className={
@@ -54,15 +56,7 @@ export default function SeasonsList({ type }: { type: 'now' | 'upcoming' }) {
                 </Link>
               </li>
             ))}
-          {!active && (
-            <button
-              className={styles.seasons__showMore}
-              type="button"
-              onClick={() => setActive((prev) => !prev)}
-            >
-              Show more
-            </button>
-          )}
+          <ShowMoreButton active={active} setActive={setActive} />
         </ul>
       </div>
     </>

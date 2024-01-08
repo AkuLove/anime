@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useGetStatisticsQuery } from '@/services/listApi';
 import styles from './RatingStats.module.scss';
 import { IScore } from '@/types/ICommon';
+import Loader from '../UI/Loader/Loader';
 
 export default function RatingStats({
   id,
@@ -53,7 +54,7 @@ export default function RatingStats({
           ) : null}
         </div>
       ) : (
-        <div>Loading...</div>
+        <Loader />
       )}
     </div>
   );
