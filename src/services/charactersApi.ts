@@ -9,22 +9,11 @@ export const charactersApi = createApi({
   tagTypes: ['Characters'],
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.jikan.moe/v4/' }),
   endpoints: (build) => ({
-    getCharactersList: build.query<
-      ICharacterResponse,
-      { type?: string; limit?: string }
-    >({
-      query: ({ type = 'characters', limit = '10' }) =>
-        `/top/${type}?${limit && `limit=${limit}`}`,
-      providesTags: (result) =>
-        result?.data
-          ? [
-              ...result.data.map(({ mal_id }) => ({
-                type: 'Characters' as const,
-                mal_id,
-              })),
-              { type: 'Characters', id: 'CHARACTERS' },
-            ]
-          : [{ type: 'Characters', id: 'CHARACTERS' }],
+    getCharactersList: build.mutation<ICharacterResponse, { page: number }>({
+      query: ({ page }) => ({
+        url: `/characters?order_by=favorites&limit=20&page=${page}`,
+        method: 'GET',
+      }),
     }),
     getSingleCharacter: build.query<
       ISingleCharacterFullResponse,
@@ -43,6 +32,6 @@ export const charactersApi = createApi({
 
 export const {
   useGetSingleCharacterQuery,
-  useGetCharactersListQuery,
+  useGetCharactersListMutation,
   useGetCharacterSearchMutation,
 } = charactersApi;

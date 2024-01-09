@@ -37,6 +37,10 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     white-space: pre-line;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

@@ -55,6 +55,8 @@ export default function List({
       .then((response) => {
         if (list && checkType(response.data) && checkType(list)) {
           setList([...list, ...response.data]);
+        } else if (list && !checkType(response.data) && !checkType(list)) {
+          setList([...list, ...response.data]);
         } else {
           setList(response.data);
         }

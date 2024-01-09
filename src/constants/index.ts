@@ -530,25 +530,25 @@ export const animeTypeOptions: IFilterItem[] = [
 export const sortOptions: IFilterItem[] = [
   {
     mal_id: 'start_date',
-    name: 'Start date'
+    name: 'Start date',
   },
   {
     mal_id: 'end_date',
-    name: 'End date'
+    name: 'End date',
   },
   {
     mal_id: 'popularity',
-    name: 'Popularity'
+    name: 'Popularity',
   },
   {
     mal_id: 'rank',
-    name: 'Rank'
+    name: 'Rank',
   },
   {
     mal_id: 'title',
-    name: 'Title'
-  }
-]
+    name: 'Title',
+  },
+];
 
 // =======================================================================================
 
