@@ -6,6 +6,10 @@
   background-color: #fff;
   height: fit-content;
 
+  @media (max-width: $tablet) {
+    width: 100%;
+  }
+
   &__hidden {
     display: none;
   }
@@ -18,6 +22,10 @@
     background-color: $deepBlueColor;
     color: #fff;
     overflow: hidden;
+
+    @media (max-width: $tablet) {
+      display: none;
+    }
 
     img {
       position: absolute;
@@ -47,6 +55,12 @@
   &__body {
     padding: rem(16);
     padding-top: rem(0);
+
+    @media (max-width: $tablet) {
+      display: flex;
+      flex-direction: column;
+      padding: rem(8);
+    }
   }
 }
 

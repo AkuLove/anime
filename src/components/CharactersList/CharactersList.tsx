@@ -37,7 +37,6 @@ export default function CharactersList() {
     charactersData({ page })
       .unwrap()
       .then((response) => {
-        console.log(response);
         if (list) {
           setList([...list, ...response.data]);
         } else {

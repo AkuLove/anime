@@ -24,7 +24,8 @@ export default function Footer() {
             </Link>
           </div>
           <p className={styles.date}>
-            {date !== 2023 ? `©AkuAnime 2023 - ${date}` : '©AkuAnime 2023'}
+            <span>©AkuAnime</span>
+            <span className={styles.date__years}>2023 - {date}</span>
           </p>
         </div>
       </div>

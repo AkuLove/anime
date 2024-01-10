@@ -1074,3 +1074,7 @@ export const mangaTypeOptions: IFilterItem[] = [
     name: 'Manhua',
   },
 ];
+
+export const tabletWidth = 991.98;
+export const mobileWidth = 767.98;
+export const mobileSmallWidth = 479.98;

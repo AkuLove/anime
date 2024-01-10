@@ -20,3 +20,13 @@
     align-items: center;
   }
 }
+
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__years {
+    font-size: rem(16);
+  }
+}

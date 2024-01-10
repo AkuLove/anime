@@ -4,7 +4,11 @@
   background-color: #fff;
   column-gap: rem(8);
   padding: rem(12) rem(16);
-  border-bottom: 1px solid $lightBlueColor;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    padding: rem(12) rem(0);
+  }
 
   &.hidden {
     display: none;

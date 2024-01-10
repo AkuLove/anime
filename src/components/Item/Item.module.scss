@@ -45,6 +45,15 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
   white-space: pre-line;
+  @include adaptiveValue('font-size', 18, 14, 0);
+
+  @media (max-width: $mobile) {
+    -webkit-line-clamp: 4;
+  }
+
+  @media (max-width: $mobileSmall) {
+    -webkit-line-clamp: 3;
+  }
 }
 
 .title {
@@ -59,6 +68,10 @@
 
   &__jap {
     color: rgba($color: $blueColor, $alpha: 0.8);
+
+    @media (max-width: $mobileSmall) {
+      display: none;
+    }
   }
 }
 
@@ -67,6 +80,15 @@
   display: flex;
   flex-wrap: wrap;
   column-gap: rem(8);
+
+  @media (max-width: $mobile) {
+    & a:nth-child(even) {
+      display: none;
+    }
+  }
+
+  @media (max-width: $mobile) {
+  }
 
   a {
     color: $deepBlueColor;

@@ -3,7 +3,58 @@
   grid-template-columns: 1fr rem(300);
   column-gap: rem(20);
 
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+  }
+
   &.hidden {
     grid-template-columns: 1fr;
+  }
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: rem(8) rem(12);
+  margin: rem(8);
+  border-radius: rem(8);
+  transition: background-color ease 0.4s;
+  border: 1px solid $lightColor;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $lightBlueColor;
+      transition: background-color ease 0.4s;
+    }
+  }
+
+  &.active {
+    background-color: $lightBlueColor;
+  }
+}
+
+.mobileConrols {
+  display: none;
+
+  @media (max-width: $tablet) {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid $lightBlueColor;
+  }
+}
+
+.desktopConrols {
+  border-bottom: 1px solid $lightBlueColor;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.filterDesktop {
+  @media (max-width: $tablet) {
+    display: none;
   }
 }

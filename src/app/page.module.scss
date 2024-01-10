@@ -14,7 +14,7 @@
 }
 
 .title {
-  @include adaptiveValue('font-size', 34, 32, 0);
+  @include adaptiveValue('font-size', 34, 28, 0);
   font-weight: 700;
   margin-bottom: rem(4);
 }

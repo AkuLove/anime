@@ -1,12 +1,12 @@
 .dropdown {
   text-align: left;
-  border: 1px solid #ccc;
+  border: 1px solid $lightBlueColor;
   position: relative;
-  border-radius: 5px;
+  border-radius: rem(4);
   width: 100%;
 
   &__input {
-    padding: 5px;
+    padding: rem(4) rem(8);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,7 +19,7 @@
     transform: translateY(rem(4));
     z-index: 2;
     width: 100%;
-    border: 1px solid #ccc;
+    border: 1px solid $lightBlueColor;
     border-radius: rem(4);
     overflow: auto;
     max-height: rem(160);
@@ -29,7 +29,7 @@
   &__item {
     display: flex;
     width: 100%;
-    padding: rem(4);
+    padding: rem(4) rem(8);
     cursor: pointer;
 
     &.selected {
