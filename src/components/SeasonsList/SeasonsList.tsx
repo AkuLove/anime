@@ -38,21 +38,25 @@ export default function SeasonsList({ type }: { type: 'now' | 'upcoming' }) {
                     {Math.round(anime.score * 10) / 10}
                   </div>
                 )}
+                <div className={styles.seasons__image}>
+                  <Link href={`/anime/${anime.mal_id}`}>
+                    <Image
+                      src={
+                        anime.images.webp.large_image_url ||
+                        anime.images.jpg.large_image_url ||
+                        '/not-found-image.jpeg'
+                      }
+                      className={styles.seasons__logo}
+                      alt={anime.title}
+                      width={162}
+                      height={226}
+                    />
+                  </Link>
+                </div>
                 <Link href={`/anime/${anime.mal_id}`}>
-                  <Image
-                    src={
-                      anime.images.webp.large_image_url ||
-                      anime.images.jpg.large_image_url ||
-                      '/not-found-image.jpeg'
-                    }
-                    className={styles.seasons__logo}
-                    alt={anime.title}
-                    width={162}
-                    height={226}
-                  />
-                </Link>
-                <Link href={`/anime/${anime.mal_id}`}>
-                  <p className={styles.seasons__title}>{anime.title_english}</p>
+                  <p className={styles.seasons__title}>
+                    {anime.title_english || anime.title}
+                  </p>
                 </Link>
               </li>
             ))}

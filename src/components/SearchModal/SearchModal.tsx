@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ISingleAnime } from '@/types/IAnime';
-import styles from './SearchModal.module.scss';
-import { ISingleManga } from '@/types/IManga';
 import { ISingleCharacter } from '@/types/ICharacters';
+import { ISingleManga } from '@/types/IManga';
+import styles from './SearchModal.module.scss';
 
 export default function SearchModal({
   animeList,

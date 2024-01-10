@@ -11,6 +11,28 @@
     overflow: hidden;
     transition: ease 1s;
 
+    @media (max-width: $pc) {
+      grid-template-columns: repeat(5, rem(162));
+    }
+
+    @media (max-width: $tablet) {
+      grid-template-columns: repeat(4, rem(162));
+    }
+
+    @media (max-width: $mobile) {
+      grid-template-columns: repeat(3, rem(162));
+    }
+
+    @media (max-width: em(600)) {
+      grid-template-columns: repeat(2, 1fr);
+      height: rem(420);
+    }
+
+    @media (max-width: $mobileSmall) {
+      grid-template-columns: 1fr;
+      height: rem(1120);
+    }
+
     &.active {
       height: 100%;
     }
@@ -18,14 +40,6 @@
 
   &__anime {
     position: relative;
-  }
-
-  &__logo {
-    min-width: rem(162);
-    min-height: rem(226);
-    height: rem(226);
-    width: rem(162);
-    object-fit: cover;
   }
 
   &__title {
@@ -41,6 +55,22 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 160%;
+    background: url('/loading.gif') center center no-repeat;
+    background-size: 30%;
+  }
+
+  &__logo {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    position: absolute;
+    height: 0;
   }
 }
 
