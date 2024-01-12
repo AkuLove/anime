@@ -31,7 +31,8 @@
 
     @media (max-width: em(359)) {
       grid-template-columns: repeat(1, 1fr);
-      height: rem(840);
+      row-gap: rem(20);
+      height: rem(940);
     }
 
     &.active {

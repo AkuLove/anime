@@ -25,7 +25,7 @@ export default function MediaBlock({
         className={styles.image}
         src={image}
         width={250}
-        height={350}
+        height={370}
         alt={title}
       />
       <div className={styles.buttons__block}>

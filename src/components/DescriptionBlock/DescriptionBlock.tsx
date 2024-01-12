@@ -10,6 +10,7 @@ import { checkValidMangaDescription } from '@/store/MangaSlice';
 import { IMangaDescriptions, ISingleManga } from '@/types/IManga';
 import { IGenres } from '@/types/ICommon';
 import RatingBlock from '../RatingBlock/RatingBlock';
+import useWindowDimensions from '@/hooks/useWindowDimensions';
 
 export default function DescriptionBlock({
   item,
@@ -24,6 +25,7 @@ export default function DescriptionBlock({
   const animeDescriptions = useAppSelector((state) => state.anime.descriptions);
   const mangaDescriptions = useAppSelector((state) => state.manga.descriptions);
   const [key, setKey] = useState<string[] | null>(null);
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     if (type === 'anime') {
@@ -71,7 +73,7 @@ export default function DescriptionBlock({
 
   return (
     <div className={styles.descriptionBlock}>
-      {item.score && (
+      {item.score && width > 600 && (
         <RatingBlock
           type={type}
           id={item.mal_id}

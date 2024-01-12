@@ -3,5 +3,10 @@
     display: grid;
     grid-template-columns: 1fr rem(220);
     column-gap: rem(24);
+
+    @media (max-width: em(600)) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
   }
 }

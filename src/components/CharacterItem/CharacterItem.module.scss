@@ -13,12 +13,6 @@
     object-fit: cover;
   }
 
-  @media (max-width: em(570)) {
-    img {
-      max-width: rem(116);
-    }
-  }
-
   &:hover .name {
     text-decoration: underline;
   }

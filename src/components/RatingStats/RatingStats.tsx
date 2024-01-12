@@ -30,9 +30,9 @@ export default function RatingStats({
           {statisticsKeys && statistics ? (
             <>
               <div className={styles.subTitles}>
-                <p className={styles.subTitles__people}>People</p>
-                <p className={styles.subTitles__percent}>Percent</p>
-                <p className={styles.subTitles__list}>Score</p>
+                <span className={styles.subTitles__people}>People</span>
+                <span className={styles.subTitles__percent}>Percent</span>
+                <span className={styles.subTitles__list}>Score</span>
               </div>
               {statisticsKeys.map((item) => (
                 <div key={item.votes} className={styles.statisticsBlock__body}>

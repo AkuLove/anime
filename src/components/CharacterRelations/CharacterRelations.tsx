@@ -40,13 +40,17 @@ export default function CharacterRelations({
                   {item.anime.title}
                 </Link>
                 <div className={styles.relation__body}>
-                  <Link href={`/anime/${item.anime.mal_id}`}>
+                  <Link
+                    className={styles.image__body}
+                    href={`/anime/${item.anime.mal_id}`}
+                  >
                     <Image
                       src={
                         item.anime.images.webp.image_url ||
                         item.anime.images.jpg.image_url ||
                         '/not-found-image.jpeg'
                       }
+                      className={styles.image}
                       width={80}
                       height={120}
                       priority={false}
@@ -66,13 +70,17 @@ export default function CharacterRelations({
                   {item.manga.title}
                 </Link>
                 <div className={styles.relation__body}>
-                  <Link href={`/manga/${item.manga.mal_id}`}>
+                  <Link
+                    className={styles.image__body}
+                    href={`/manga/${item.manga.mal_id}`}
+                  >
                     <Image
                       src={
                         item.manga.images.webp.image_url ||
                         item.manga.images.jpg.image_url ||
                         '/not-found-image.jpeg'
                       }
+                      className={styles.image}
                       width={80}
                       height={120}
                       priority={false}

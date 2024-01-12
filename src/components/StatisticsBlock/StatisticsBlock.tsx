@@ -41,9 +41,9 @@ export default function StatisticsBlock({
             {statisticsKeys && statistics ? (
               <>
                 <div className={styles.subTitles}>
-                  <p className={styles.subTitles__people}>People</p>
-                  <p className={styles.subTitles__percent}>Percent</p>
-                  <p className={styles.subTitles__list}>List</p>
+                  <span className={styles.subTitles__people}>People</span>
+                  <span className={styles.subTitles__percent}>Percent</span>
+                  <span className={styles.subTitles__list}>List</span>
                 </div>
                 {statisticsKeys.map((item) => (
                   <div key={item} className={styles.statisticsBlock__body}>

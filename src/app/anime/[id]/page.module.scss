@@ -7,13 +7,31 @@
   }
 
   &__body {
-    display: flex;
+    display: grid;
+    grid-template-columns: rem(250) 1fr;
     column-gap: rem(16);
     margin-bottom: rem(20);
+
+    @media (max-width: em(600)) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
 .synopsis {
   font-size: rem(18);
   white-space: pre-line;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  border-bottom: rem(1) solid $lightBlueColor;
+  padding-bottom: rem(8);
+  margin-bottom: rem(12);
+}
+
+.main__title {
+  font-size: rem(32);
+  font-weight: 700;
 }
