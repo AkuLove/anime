@@ -26,7 +26,7 @@
   position: fixed;
   padding-top: rem(60);
   width: rem(280);
-  height: 100svh;
+  height: 100lvw;
   background-color: #fff;
   z-index: 3;
   top: 0;
@@ -49,8 +49,8 @@
   background-color: rgba($color: #000000, $alpha: 0.3);
   transition: opacity ease 0.5s;
   &.active {
-    height: 100svh;
-    width: 100svw;
+    height: 100lvh;
+    width: 100lvw;
     opacity: 1;
     transition: opacity ease 0.5s;
   }
