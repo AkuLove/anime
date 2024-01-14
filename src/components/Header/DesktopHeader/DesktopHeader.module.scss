@@ -1,0 +1,59 @@
+.header {
+  background-color: $lightBlueColor;
+  color: $deepBlueColor;
+  border-bottom: rem(3) solid $blueColor;
+  padding: rem(4) 0;
+  margin-bottom: rem(20);
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  column-gap: rem(6);
+}
+
+.logo {
+  @include adaptiveValue('font-size', 26, 18, 0);
+  letter-spacing: rem(1);
+  a {
+    color: $deepBlueColor;
+    padding-right: rem(12);
+    border-right: 1px solid $blueColor;
+    transition: color ease 0.3s;
+  }
+  a:hover {
+    color: $blueColor;
+    transition: color ease 0.3s;
+  }
+}
+
+.menu__navigation {
+  flex: 1 1 auto;
+}
+
+.menu__list {
+  display: flex;
+  @include adaptiveValue('font-size', 20, 16, 0);
+
+  & * {
+    transition: color ease 0.3s;
+    padding: rem(4) 0;
+    @include adaptiveValue('padding-right', 6, 4, 0);
+    @include adaptiveValue('padding-left', 6, 4, 0);
+  }
+
+  & *.active {
+    color: $blueColor;
+  }
+
+  & *:hover {
+    color: $blueColor;
+    transition: color ease 0.3s;
+    cursor: pointer;
+  }
+}
+
+.searchbar {
+  @include adaptiveValue('width', 320, 160, 0);
+  position: relative;
+}

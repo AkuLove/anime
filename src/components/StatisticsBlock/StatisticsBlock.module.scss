@@ -6,7 +6,7 @@
   background-color: #fff;
   box-shadow: 4px 10px 15px -3px rgba(0, 0, 0, 0.3);
   border-radius: rem(8);
-  width: 200%;
+  width: 220%;
   @include adaptiveValue('font-size', 16, 14, 0);
 
   @media (max-width: em(600)) {

@@ -35,5 +35,6 @@ module.exports = {
     'react-refresh/only-export-components': 'off',
     'import/extensions': 'off',
     'react/require-default-props': 'off',
+    'react/jsx-no-useless-fragment': 'off',
   },
 };
