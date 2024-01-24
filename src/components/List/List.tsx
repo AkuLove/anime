@@ -49,7 +49,7 @@ export default function List({
   }, []);
 
   const checkFilters = () => {
-    const altQuery = 'sfw=true&';
+    const altQuery = '';
     filterData({ type, filterValue: `${query ? `${query}&` : altQuery}`, page })
       .unwrap()
       .then((response) => {
